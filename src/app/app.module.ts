@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 
 // Firebase Imports
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { environment } from 'src/environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// Components
 import { BsNavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
@@ -21,6 +22,12 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+
+// Services
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { UserService } from './services/user.service';
+import { AdminGuard } from './services/admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -41,12 +48,16 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
 
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     AngularFireAuthModule,
 
     NgbModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard,
+    UserService,
+    AdminGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

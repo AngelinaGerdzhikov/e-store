@@ -8,9 +8,12 @@ import { LoginComponent } from './login/login.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductsComponent } from './products/products.component';
+import { AdminGuard } from './services/admin-guard.service';
+import { AuthGuard } from './services/auth-guard.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
+  // Anonymous user routes
   {
     path: '',
     component: HomeComponent
@@ -24,28 +27,37 @@ const routes: Routes = [
     component: ShoppingCartComponent
   },
   {
-    path: 'checkout',
-    component: CheckoutComponent
-  },
-  {
-    path: 'order-success',
-    component: OrderSuccessComponent
-  },
-  {
     path: 'login',
     component: LoginComponent
   },
+
+  // User routes
   {
-    path: 'my/orders',
-    component: MyOrdersComponent
+    path: 'checkout',
+    component: CheckoutComponent,
+    canActivate: [AuthGuard]
   },
   {
+    path: 'order-success',
+    component: OrderSuccessComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'my/orders',
+    component: MyOrdersComponent,
+    canActivate: [AuthGuard]
+  },
+
+  // Admin routes
+  {
     path: 'admin/products',
-    component: AdminProductsComponent
+    component: AdminProductsComponent,
+    canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: 'admin/orders',
-    component: AdminOrdersComponent
+    component: AdminOrdersComponent,
+    canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: '**',

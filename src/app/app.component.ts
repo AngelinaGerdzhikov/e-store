@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +10,22 @@ import { AngularFireDatabase } from '@angular/fire/database';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'e-store App';
-  active = 1;
   products$;
   
-  constructor(private db: AngularFireDatabase) {
-    this.products$ = db.list('/products').valueChanges();
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private userService: UserService
+  ) {
+    this.auth.user$.subscribe(user => {
+      if (user) {
+        
+        this.userService.save(user);
+
+        let returnUrl = localStorage.getItem('returnUrl');
+        this.router.navigateByUrl(returnUrl);
+      }
+    })
+    // this.products$ = db.list('/products').valueChanges();
   }
 }
