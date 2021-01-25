@@ -26,6 +26,5 @@ export class AppComponent {
         this.router.navigateByUrl(returnUrl);
       }
     })
-    // this.products$ = db.list('/products').valueChanges();
   }
 }

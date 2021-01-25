@@ -1,1 +1,36 @@
-<p>admin-products works!</p>
+<div class="row">
+  <div class="col-md-12">
+    <a routerLink="/admin/products/new" class="btn btn-primary">Add new product</a>
+  </div>
+  <div class="col-md-12">
+    <input
+      #query
+      (keyup)="filter(query.value)"
+      type="text"
+      class="form-control"
+      placeholder="Search..."
+    >
+  </div>
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col" sortable="title" (sort)="onSort($event)">Title</th>
+          <th scope="col" sortable="price" (sort)="onSort($event)">Price</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of filteredProducts; index as i">
+          <th scope="row"> {{ i + 1 }}</th>
+          <td>{{ p.title }}</td>
+          <td>{{ p.price }}</td>
+          <td>
+            <a [routerLink]="['/admin/products/', p.key]">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
