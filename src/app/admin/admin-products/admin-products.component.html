@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let p of filteredProducts; index as i">
+        <tr *ngFor="let p of finalProducts; index as i">
           <th scope="row"> {{ i + 1 }}</th>
           <td>{{ p.title }}</td>
           <td>{{ p.price }}</td>
@@ -34,3 +34,26 @@
     </table>
   </div>
 </div>
+
+<!-- <div class="row">
+  <data-table [(tableData)]="tableData" (sorted)="onSort($event)">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" sortable="title" (sort)="onSort($event)">Title</th>
+        <th scope="col" sortable="price" (sort)="onSort($event)">Price</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of tableData?.data; index as i">
+        <th scope="row"> {{ i + 1 }}</th>
+        <td>{{ p.title }}</td>
+        <td>{{ p.price }}</td>
+        <td>
+          <a [routerLink]="['/admin/products/', p.key]">Edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </data-table>
+</div> -->

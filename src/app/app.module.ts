@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 
 // Directive
 import { MinValidatorDirective } from './validators/min.validator';
+import { SortableHeaderDirective } from './common/data-table/sortable-header.directive';
 
 
 // Services
@@ -53,7 +54,8 @@ import { UrlValidatorDirective } from './validators/url.validator';
     LoginComponent,
     ProductFormComponent,
     MinValidatorDirective,
-    UrlValidatorDirective
+    UrlValidatorDirective,
+    SortableHeaderDirective
   ],
   imports: [
     BrowserModule,

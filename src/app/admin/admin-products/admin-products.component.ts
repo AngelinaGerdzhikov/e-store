@@ -1,5 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { title } from 'process';
 import { Subscription } from 'rxjs';
+import { SortEvent } from 'src/app/common/data-table/sort-event';
+import { SortableHeaderDirective } from 'src/app/common/data-table/sortable-header.directive';
+import { TableData } from 'src/app/common/data-table/table-data';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -8,30 +12,46 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.scss']
 })
-export class AdminProductsComponent implements OnInit, OnDestroy {
-  products: Product[];
-  filteredProducts: Product[];
+export class AdminProductsComponent implements OnDestroy {
+  @ViewChildren(SortableHeaderDirective) headers: QueryList<SortableHeaderDirective>;
+  private products: Product[];
+  private compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
+  finalProducts: Product[];
   subscription: Subscription;
 
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
-      .subscribe(products => this.filteredProducts = this.products = products);
+      .subscribe(products => this.finalProducts = this.products = products);
   }
 
   filter(query) {
-    this.filteredProducts = (query) ?
+    this.finalProducts = (query) ?
       this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
       this.products;
   }
 
-  ngOnInit() {
-  }
+  onSort({column, direction}: SortEvent) {
 
+    // resetting other headers
+    this.headers.forEach(header => {
+      if (header.sortable !== column) {
+        header.direction = '';
+      }
+    });
+
+    // sorting countries
+    if (direction === '' || column === '') {
+      this.finalProducts = this.products;
+    } else {
+      this.finalProducts = [...this.products].sort((a, b) => {
+        const res = this.compare(a[column], b[column]);
+        return direction === 'asc' ? res : -res;
+      });
+    }
+  }
+  
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  onSort(event) {
-    console.log(event);
-  }
 }
