@@ -14,14 +14,23 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class AdminProductsComponent implements OnDestroy {
   @ViewChildren(SortableHeaderDirective) headers: QueryList<SortableHeaderDirective>;
-  private products: Product[];
+
+  private products: Product[] = [];
   private compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
-  finalProducts: Product[];
+
   subscription: Subscription;
+  finalProducts: Product[] = [];
+
+  page = 1;
+  pageSize = 2;
+  collectionSize: number;
 
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
-      .subscribe(products => this.finalProducts = this.products = products);
+      .subscribe(products => {
+        this.finalProducts = this.products = products; 
+        this.collectionSize = this.finalProducts.length;
+      });
   }
 
   filter(query) {
@@ -39,7 +48,7 @@ export class AdminProductsComponent implements OnDestroy {
       }
     });
 
-    // sorting countries
+    // sorting products
     if (direction === '' || column === '') {
       this.finalProducts = this.products;
     } else {
