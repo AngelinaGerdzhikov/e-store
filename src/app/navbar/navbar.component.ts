@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppUser } from '../models/app-user';
+import { AppUser } from '../common/models/app-user';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class BsNavbarComponent {
+  isCollapsed = true;
   appUser: AppUser;
   
   constructor(

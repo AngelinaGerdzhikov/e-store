@@ -17,7 +17,7 @@ const routes: Routes = [
   // Anonymous user routes
   {
     path: '',
-    component: HomeComponent
+    component: ProductsComponent
   },
   {
     path: 'products',

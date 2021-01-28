@@ -98,16 +98,8 @@
     </form>    
   </div>
   <div class="col-md-6">
-    <aside  *ngIf="product.title" class="card" style="width: 18rem;">
-      <img [src]="product.imageUrl" *ngIf="product.imageUrl" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">{{ product.title }}</h5>
-        <div class="card-text">
-          <h6>{{ product.category }}</h6>
-          <p>{{ product.description }}</p>
-          <p>{{ product.price | currency }}</p>
-        </div>
-      </div>
+    <aside>
+      <product-card [product]="product" [showActions]="false"></product-card>
     </aside>
   </div>
 </div>

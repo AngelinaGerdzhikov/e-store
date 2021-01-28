@@ -1,0 +1,12 @@
+.card {
+  margin-bottom: 30px;
+  
+  img {
+    object-fit: cover;
+    height: 200px;
+  }
+
+  &-footer {
+    padding: 0;
+  }
+}

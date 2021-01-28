@@ -1,10 +1,8 @@
-import { Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { title } from 'process';
+import { Component, OnDestroy, QueryList, ViewChildren } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SortEvent } from 'src/app/common/data-table/sort-event';
 import { SortableHeaderDirective } from 'src/app/common/data-table/sortable-header.directive';
-import { TableData } from 'src/app/common/data-table/table-data';
-import { Product } from 'src/app/models/product';
+import { Product } from 'src/app/common/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({

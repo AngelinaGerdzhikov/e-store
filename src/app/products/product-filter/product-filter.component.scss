@@ -1,0 +1,14 @@
+li {
+  a {
+    color: initial;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: none;
+    }  
+  }
+
+  &.active a {
+    color: inherit;  
+  }
+}
