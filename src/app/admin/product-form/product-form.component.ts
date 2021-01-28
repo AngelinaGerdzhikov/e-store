@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'src/app/models/product';
+import { Product } from 'src/app/common/models/product';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 import { take } from 'rxjs/operators';
@@ -21,7 +21,7 @@ export class ProductFormComponent {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.categories$ = this.categoryService.getCategories();  
+    this.categories$ = this.categoryService.getAll();  
 
     this.id = this.route.snapshot.paramMap.get('id');
     

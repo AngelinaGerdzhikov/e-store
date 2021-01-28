@@ -38,6 +38,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product.service';
 import { UrlValidatorDirective } from './validators/url.validator';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { UrlValidatorDirective } from './validators/url.validator';
     ProductFormComponent,
     MinValidatorDirective,
     UrlValidatorDirective,
-    SortableHeaderDirective
+    SortableHeaderDirective,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
