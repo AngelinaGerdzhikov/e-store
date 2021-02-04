@@ -17,17 +17,22 @@ export class ShoppingCart {
       );
     }
   }
-
+    
   get totalItemsCount() {
     return this.items.reduce((count, item) => {
       return count += item.quantity;
     }, 0);
     
   }
-
+  
   get totalPrice() {
     return this.items.reduce((totalPrice, item) => {
       return totalPrice += item.totalPrice;
     }, 0);
+  }
+
+  getItemQuantity(productKey: string) {
+    if (!this.itemsMap || !this.itemsMap[productKey]) return 0;
+    return this.itemsMap[productKey].quantity || 0;
   }
 }
