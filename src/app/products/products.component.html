@@ -5,7 +5,10 @@
     </aside>
   </div>
   <article class="col-9">
-    <div class="row row-cols-3 row-cols-md-3 g-4">
+    <div
+      class="row row-cols-3 row-cols-md-3 g-4"
+      *ngIf="shoppingCart$ | async as shoppingCart"
+    >
       <ng-container *ngFor="let product of filteredProducts; index as i">
         <div class="col">
           <product-card

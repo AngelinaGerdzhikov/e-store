@@ -33,6 +33,6 @@ export class ShoppingCart {
 
   getItemQuantity(productKey: string) {
     if (!this.itemsMap || !this.itemsMap[productKey]) return 0;
-    return this.itemsMap[productKey].quantity || 0;
+     return this.itemsMap[productKey].quantity || 0;
   }
 }
