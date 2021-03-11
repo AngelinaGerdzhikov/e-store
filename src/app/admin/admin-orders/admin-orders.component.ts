@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Order } from 'src/app/common/models/order';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
-  selector: 'app-admin-orders',
+  selector: 'admin-orders',
   templateUrl: './admin-orders.component.html',
   styleUrls: ['./admin-orders.component.scss']
 })
-export class AdminOrdersComponent implements OnInit {
+export class AdminOrdersComponent {
+  orders$: Observable<Order[]>;
 
-  constructor() { }
+  page = 1;
+  pageSize = 6;
+  collectionSize: number;
 
-  ngOnInit(): void {
+  constructor(orderService: OrderService) { 
+    this.orders$ = orderService.getOrders();
   }
-
 }

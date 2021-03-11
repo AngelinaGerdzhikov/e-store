@@ -1,0 +1,5 @@
+Order with key {{orderId}}:
+
+<div *ngIf="order$ | async as order">
+  <p>{{ order.shippingAddress.name }}</p>
+</div>

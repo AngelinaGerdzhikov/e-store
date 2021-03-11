@@ -1,8 +1,14 @@
-<h1>Shipping</h1>
-<div class="row">
+<div class="row" *ngIf="shoppingCart$ | async as shoppingCart">
   <div class="col-6">
-    <shipping-form [shoppingCart]="shoppingCart"></shipping-form>
-    <button class="btn btn-primary" type="submit">Place Order</button>
+    <h2>Shipping</h2>
+    <shipping-form #shippingForm [shoppingCart]="shoppingCart"></shipping-form>
+    <button
+      [disabled]="!shippingForm.f"
+      class="btn btn-primary"
+      (click)="placeOrder(shippingForm.shippingAddress, shoppingCart.items)">Place Order</button>
   </div>
-  <div class="col-6"></div>
+  <div class="col-6">
+    <h2>Order Summary</h2>
+    <shopping-cart-summary [shoppingCart]="shoppingCart"></shopping-cart-summary>
+  </div>
 </div>

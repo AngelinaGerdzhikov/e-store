@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { OrderService } from '../services/order.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-my-orders',
   templateUrl: './my-orders.component.html',
   styleUrls: ['./my-orders.component.scss']
 })
-export class MyOrdersComponent implements OnInit {
+export class MyOrdersComponent {
+  orders$;
 
-  constructor() { }
+  page = 1;
+  pageSize = 6;
+  collectionSize: number;
 
-  ngOnInit(): void {
+
+  constructor(
+    private auth: AuthService,
+    private orderService: OrderService
+  ) { 
+    this.orders$ = this.auth.user$.pipe(
+      switchMap(user => this.orderService.getOrdersByUser(user.uid))
+    );
   }
-
 }
