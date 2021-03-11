@@ -1,7 +1,7 @@
 import { Directive, EventEmitter, Input, Output } from "@angular/core";
-import { SortColumn } from "./sort-column";
-import { SortDirection } from "./sort-direction";
-import { SortEvent } from "./sort-event";
+import { SortColumn } from "shared/models/data-table/sort-column";
+import { SortDirection } from "shared/models/data-table/sort-direction";
+import { SortEvent } from "shared/models/data-table/sort-event";
 
 // const rotate: {[key: string]: SortDirection} = { 'asc': 'desc', 'desc': '', '': 'asc' };
 const rotate: {[key: string]: SortDirection} = { 'asc': 'desc', 'desc': 'asc', '': 'asc' };

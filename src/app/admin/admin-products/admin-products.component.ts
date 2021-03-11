@@ -1,7 +1,7 @@
 import { Component, OnDestroy, QueryList, ViewChildren } from '@angular/core';
-import { SortEvent } from 'app/common/data-table/sort-event';
-import { SortableHeaderDirective } from 'app/common/data-table/sortable-header.directive';
 import { Subscription } from 'rxjs';
+import { SortableHeaderDirective } from 'shared/directives/sortable-header.directive';
+import { SortEvent } from 'shared/models/data-table/sort-event';
 import { Product } from 'shared/models/product';
 import { ProductService } from 'shared/services/product/product.service';
 
