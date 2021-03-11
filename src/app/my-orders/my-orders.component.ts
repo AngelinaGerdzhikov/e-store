@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { OrderService } from '../services/order.service';
+import { AuthService } from 'shared/services/auth/auth.service';
+import { OrderService } from 'shared/services/order/order.service';
 import { switchMap } from 'rxjs/operators';
 
 @Component({

@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Category } from 'shared/models/category';
 import { Product } from 'shared/models/product';
-import { ProductService } from '../services/product.service';
+import { ProductService } from 'shared/services/product/product.service';
 import { switchMap } from 'rxjs/operators';
-import { ShoppingCartService } from '../services/shopping-cart.service';
+import { ShoppingCartService } from 'shared/services/shopping-cart/shopping-cart.service';
 import { ShoppingCart } from 'shared/models/shopping-cart';
 
 @Component({

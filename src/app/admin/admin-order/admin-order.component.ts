@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { OrderService } from 'app/services/order.service';
 import { Observable } from 'rxjs';
+import { OrderService } from 'shared/services/order/order.service';
 
 @Component({
   selector: 'app-admin-order',

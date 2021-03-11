@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ShippingAddress } from 'shared/models/shipping-address';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'shared/services/auth/auth.service';
 import { Observable, Subscription } from 'rxjs';
-import { ShoppingCartService } from '../services/shopping-cart.service';
+import { ShoppingCartService } from 'shared/services/shopping-cart/shopping-cart.service';
 import { ShoppingCart } from 'shared/models/shopping-cart';
-import { OrderService } from '../services/order.service';
+import { OrderService } from 'shared/services/order/order.service';
 import { Order } from 'shared/models/order';
 import { Router } from '@angular/router';
 

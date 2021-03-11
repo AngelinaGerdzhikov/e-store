@@ -1,9 +1,9 @@
 import { Component, OnDestroy, QueryList, ViewChildren } from '@angular/core';
 import { SortEvent } from 'app/common/data-table/sort-event';
 import { SortableHeaderDirective } from 'app/common/data-table/sortable-header.directive';
-import { ProductService } from 'app/services/product.service';
 import { Subscription } from 'rxjs';
 import { Product } from 'shared/models/product';
+import { ProductService } from 'shared/services/product/product.service';
 
 @Component({
   selector: 'app-admin-products',

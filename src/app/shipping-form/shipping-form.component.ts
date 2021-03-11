@@ -3,8 +3,8 @@ import { FormControl, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ShippingAddress } from 'shared/models/shipping-address';
 import { ShoppingCart } from 'shared/models/shopping-cart';
-import { AuthService } from '../services/auth.service';
-import { ShippingService } from '../services/shipping.service';
+import { AuthService } from 'shared/services/auth/auth.service';
+import { ShippingService } from 'shared/services/shipping/shipping.service';
 
 @Component({
   selector: 'shipping-form',
