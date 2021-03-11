@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AppUser } from '../common/models/app-user';
-import { ShoppingCart } from '../common/models/shopping-cart';
+import { AppUser } from 'shared/models/app-user';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 import { AuthService } from '../services/auth.service';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 

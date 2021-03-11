@@ -1,3 +1,3 @@
-import { Product } from "src/app/common/models/product";
+import { Product } from "shared/models/product";
 
 export type SortColumn = keyof Product | '';

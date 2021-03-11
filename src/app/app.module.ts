@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { environment } from 'src/environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Components
@@ -47,6 +46,7 @@ import { OrderService } from './services/order.service';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
+import { environment } from 'environments/environment';
 
 @NgModule({
   declarations: [

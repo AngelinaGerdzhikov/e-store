@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ShippingAddress } from '../common/models/shipping-address';
-import { ShoppingCart } from '../common/models/shopping-cart';
+import { ShippingAddress } from 'shared/models/shipping-address';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 import { AuthService } from '../services/auth.service';
 import { ShippingService } from '../services/shipping.service';
 

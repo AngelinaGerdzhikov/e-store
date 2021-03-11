@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { ShippingAddress } from '../common/models/shipping-address';
+import { ShippingAddress } from 'shared/models/shipping-address';
 import { AuthService } from './auth.service';
 import { switchMap, map } from 'rxjs/operators';
 import { of } from 'rxjs';
