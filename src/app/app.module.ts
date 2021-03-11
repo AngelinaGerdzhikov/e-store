@@ -7,24 +7,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'environments/environment';
 import { SortableHeaderDirective } from 'shared/directives/sortable-header.directive';
 import { SharedModule } from 'shared/shared.module';
+import { MinValidatorDirective } from 'shared/validators/min.validator';
+import { UrlValidatorDirective } from 'shared/validators/url.validator';
 
 import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { CoreModule } from './core/core.module';
 import { LoginComponent } from './login/login.component';
-import { BsNavbarComponent } from './navbar/navbar.component';
 import { ShippingFormComponent } from './shopping/components/shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './shopping/components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingModule } from './shopping/shopping.module';
-import { MinValidatorDirective } from './validators/min.validator';
-import { UrlValidatorDirective } from './validators/url.validator';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BsNavbarComponent,
-    HomeComponent,
+    AppComponent,    
     LoginComponent,
     MinValidatorDirective,
     UrlValidatorDirective,
@@ -34,14 +31,15 @@ import { UrlValidatorDirective } from './validators/url.validator';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     NgbModule,
     SharedModule,
+    AppRoutingModule,
     AdminModule,
-    ShoppingModule
+    ShoppingModule,
+    CoreModule,
   ],
   providers: [
     
