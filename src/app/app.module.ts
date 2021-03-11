@@ -8,10 +8,7 @@ import { environment } from 'environments/environment';
 import { SortableHeaderDirective } from 'shared/directives/sortable-header.directive';
 import { SharedModule } from 'shared/shared.module';
 
-import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -38,29 +35,23 @@ import { UrlValidatorDirective } from './validators/url.validator';
     CheckoutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent,
     MinValidatorDirective,
     UrlValidatorDirective,
     SortableHeaderDirective,
     ProductFilterComponent,
     ShippingFormComponent,
     ShoppingCartSummaryComponent,
-    AdminOrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-
     NgbModule,
-
-    SharedModule
+    SharedModule,
+    AdminModule
   ],
   providers: [
     
