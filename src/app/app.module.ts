@@ -42,6 +42,11 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ShippingService } from './services/shipping.service';
+import { OrderService } from './services/order.service';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +67,10 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     SortableHeaderDirective,
     ProductFilterComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShippingFormComponent,
+    ShoppingCartSummaryComponent,
+    AdminOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +89,9 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     AdminGuard,
     CategoryService,
     ProductService,
-    ShoppingCartService
+    ShoppingCartService,
+    ShippingService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

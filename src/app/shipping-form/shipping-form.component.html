@@ -1,0 +1,48 @@
+<form #f="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      name="name"
+      #name="ngModel"
+      [(ngModel)]="shippingAddress.name"
+      placeholder="Name"
+      type="text"
+      class="form-control"
+      required
+    > 
+  </div>
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input
+      name="country"
+      #country="ngModel"
+      [(ngModel)]="shippingAddress.country"
+      placeholder="Country"
+      type="text"
+      class="form-control"
+      required>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input
+      name="city"
+      #city="ngModel"
+      [(ngModel)]="shippingAddress.city"
+      placeholder="Country"
+      type="text"
+      class="form-control"
+      required>
+  </div>
+  <div class="form-group">
+    <label for="addressLine">Address Line</label>
+    <input
+      name="addressLine"
+      #addressLine="ngModel"
+      [(ngModel)]="shippingAddress.addressLine"
+      placeholder="Address Line"
+      type="text"
+      class="form-control"
+      required>
+  </div>
+  <button class="btn btn-light" (click)="saveAddress(f.value)">Save address</button>
+</form>
