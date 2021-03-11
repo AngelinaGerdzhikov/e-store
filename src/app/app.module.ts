@@ -11,13 +11,12 @@ import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { LoginComponent } from './login/login.component';
+import { MembershipModule } from './membership/membership.module';
 import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
-    AppComponent,    
-    LoginComponent    
+    AppComponent  
   ],
   imports: [
     BrowserModule,
@@ -30,6 +29,7 @@ import { ShoppingModule } from './shopping/shopping.module';
     ShoppingModule,
     AppRoutingModule,
     CoreModule,
+    MembershipModule
   ],
   providers: [
     
