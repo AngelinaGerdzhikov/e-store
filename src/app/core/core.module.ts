@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BsNavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { CoreRoutingModule } from './core-routing.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     CommonModule,
-    NgbModule
+    NgbModule,
+    CoreRoutingModule
   ],
   exports: [
     BsNavbarComponent
