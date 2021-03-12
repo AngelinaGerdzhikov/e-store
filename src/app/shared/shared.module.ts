@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
@@ -24,9 +27,16 @@ import { UrlValidatorDirective } from './validators/url.validator';
     SortableHeaderDirective,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    NgbModule,
+    AngularFireAuthModule
   ],
   exports: [
+    CommonModule,
+    FormsModule,
+    NgbModule,
+    AngularFireAuthModule,
     ProductCardComponent,
     ProductQuantityComponent
   ],

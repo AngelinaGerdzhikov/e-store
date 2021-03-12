@@ -19,10 +19,7 @@ import { AdminGuard } from './services/admin-guard/admin-guard.service';
     ProductFormComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
     SharedModule,
-    NgbModule,
     AdminRoutingModule
   ],
   providers: [

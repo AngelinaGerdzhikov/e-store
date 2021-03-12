@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BsNavbarComponent } from './components/navbar/navbar.component';
+import { SharedModule } from 'shared/shared.module';
+
 import { HomeComponent } from './components/home/home.component';
+import { BsNavbarComponent } from './components/navbar/navbar.component';
 import { CoreRoutingModule } from './core-routing.module';
 
 @NgModule({
   declarations: [
     BsNavbarComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
-    CommonModule,
-    NgbModule,
+    SharedModule,
     CoreRoutingModule
   ],
   exports: [
