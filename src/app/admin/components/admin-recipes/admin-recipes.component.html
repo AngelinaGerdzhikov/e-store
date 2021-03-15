@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-12">
+    <a routerLink="/admin/recipes/new" class="btn btn-primary">Add new recipe</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <input
+      #query
+      (keyup)="filter(query.value)"
+      type="text"
+      class="form-control"
+      placeholder="Search..."
+    >
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let recipe of displayRecipes | slice: (page-1) * pageSize : page * pageSize; index as i">
+          <th scope="row"> {{ i + 1 }}</th>
+          <td>{{ recipe.title }}</td>
+          <td>{{ recipe.authorDisplayName }}</td>
+          <td>
+            <a [routerLink]="['/admin/recipes/', recipe.key]">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="collectionSize"></ngb-pagination>
+  
+  <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+    <option [ngValue]="2">2 items per page</option>
+    <option [ngValue]="4">4 items per page</option>
+    <option [ngValue]="6">6 items per page</option>
+  </select>
+</div>

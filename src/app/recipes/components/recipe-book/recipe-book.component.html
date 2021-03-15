@@ -1,1 +1,10 @@
-<p>recipe-book works!</p>
+<div class="row">
+  <div class="col-md-5">
+    <ng-container *ngIf="recipes$ | async as recipes">
+      <recipe-list [recipes]="recipes"></recipe-list>
+    </ng-container>
+  </div>
+  <div class="col-md-7">
+
+  </div>
+</div>

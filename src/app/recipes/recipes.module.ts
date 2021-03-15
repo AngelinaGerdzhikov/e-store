@@ -2,22 +2,22 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from 'shared/shared.module';
 
 import { RecipeBookComponent } from './components/recipe-book/recipe-book.component';
-import { RecipesRoutingModule } from './recipes-routing.module';
-import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
-import { RecipeItemComponent } from './components/recipe-item/recipe-item.component';
 import { RecipeDetailsComponent } from './components/recipe-details/recipe-details.component';
+import { RecipeListItemComponent } from './components/recipe-list-item/recipe-list-item.component';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
+import { RecipesRoutingModule } from './recipes-routing.module';
+import { RecipesService } from 'shared/services/recipes/recipes.service';
 
 @NgModule({
   declarations: [
     RecipeBookComponent,
     RecipeListComponent,
-    RecipeItemComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
+    RecipeListItemComponent
   ],
   imports: [
     SharedModule,
     RecipesRoutingModule
-  ],
-  exports: [ ]
+  ]
 })
 export class RecipesModule { }

@@ -12,6 +12,7 @@ import { AuthService } from './services/auth/auth.service';
 import { CategoryService } from './services/category/category.service';
 import { OrderService } from './services/order/order.service';
 import { ProductService } from './services/product/product.service';
+import { RecipesService } from './services/recipes/recipes.service';
 import { ShippingService } from './services/shipping/shipping.service';
 import { ShoppingCartService } from './services/shopping-cart/shopping-cart.service';
 import { UserService } from './services/user/user.service';
@@ -48,7 +49,8 @@ import { UrlValidatorDirective } from './validators/url.validator';
     ProductService,
     ShoppingCartService,
     ShippingService,
-    OrderService
+    OrderService,
+    RecipesService
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,7 @@
+<div>
+  <img [src]="recipe.imageUrl" class="img-responsive">
+</div>
+<div>
+  <h4 class="list-group-item-heading">{{ recipe.title }}</h4>
+  <p class="list-group-item-text">{{ recipe.description | slice:0:140 }}</p>
+</div>
