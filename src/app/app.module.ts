@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MembershipModule } from './membership/membership.module';
-import { RecipiesModule } from './recipies/recipies.module';
+import { RecipesModule } from './recipes/recipes.module';
 import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
@@ -21,7 +21,7 @@ import { ShoppingModule } from './shopping/shopping.module';
     AngularFireModule.initializeApp(environment.firebase),
     SharedModule,
     ShoppingModule,
-    RecipiesModule,
+    RecipesModule,
     AdminModule,
     AppRoutingModule,
     CoreModule,
