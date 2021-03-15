@@ -1,1 +1,7 @@
-<p>recipe-details works!</p>
+<div class="row">
+  <img [src]="recipe?.imageUrl" [alt]="recipe?.title">
+  <h1>{{ recipe?.title }}</h1>
+  <p>{{ recipe?.description }}</p>
+  <hr>
+  <p>{{ recipe?.authorDisplayName }}</p>
+</div>
