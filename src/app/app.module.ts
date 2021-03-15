@@ -9,25 +9,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MembershipModule } from './membership/membership.module';
+import { RecipiesModule } from './recipies/recipies.module';
 import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
-    AppComponent  
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     SharedModule,
-    AdminModule,
     ShoppingModule,
+    RecipiesModule,
+    AdminModule,
     AppRoutingModule,
     CoreModule,
     MembershipModule
   ],
-  providers: [
-    
-  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
