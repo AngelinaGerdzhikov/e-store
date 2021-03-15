@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ingredient } from 'app/recipes/models/ingredient';
-import { Recipe } from 'app/recipes/models/recipe';
 import { Observable } from 'rxjs';
+import { Recipe } from 'shared/models/recipe';
 import { RecipesService } from 'shared/services/recipes/recipes.service';
 
 @Component({

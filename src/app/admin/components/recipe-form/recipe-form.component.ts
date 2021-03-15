@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ingredient } from 'app/recipes/models/ingredient';
-import { Recipe } from 'app/recipes/models/recipe';
+import { Ingredient } from 'shared/models/ingredient';
+import { Recipe } from 'shared/models/recipe';
 import { AuthService } from 'shared/services/auth/auth.service';
 import { RecipesService } from 'shared/services/recipes/recipes.service';
 
