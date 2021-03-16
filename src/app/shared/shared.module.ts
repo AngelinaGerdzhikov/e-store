@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SortableHeaderDirective } from 'shared/directives/sortable-header/sortable-header.directive';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
-import { SortableHeaderDirective } from './directives/sortable-header.directive';
 import { AuthGuard } from './services/auth-guard/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
 import { CategoryService } from './services/category/category.service';
@@ -18,6 +18,7 @@ import { ShoppingCartService } from './services/shopping-cart/shopping-cart.serv
 import { UserService } from './services/user/user.service';
 import { MinValidatorDirective } from './validators/min.validator';
 import { UrlValidatorDirective } from './validators/url.validator';
+import { DropdownDirective } from './directives/dropdown/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UrlValidatorDirective } from './validators/url.validator';
     MinValidatorDirective,
     UrlValidatorDirective,
     SortableHeaderDirective,
+    DropdownDirective
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,11 @@ import { UrlValidatorDirective } from './validators/url.validator';
     NgbModule,
     AngularFireAuthModule,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    MinValidatorDirective,
+    UrlValidatorDirective,
+    SortableHeaderDirective,
+    DropdownDirective
   ],
   providers: [
     AuthService,

@@ -6,7 +6,6 @@ import { RecipeDetailsComponent } from './components/recipe-details/recipe-detai
 import { RecipeListItemComponent } from './components/recipe-list-item/recipe-list-item.component';
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
 import { RecipesRoutingModule } from './recipes-routing.module';
-import { RecipesService } from 'shared/services/recipes/recipes.service';
 
 @NgModule({
   declarations: [

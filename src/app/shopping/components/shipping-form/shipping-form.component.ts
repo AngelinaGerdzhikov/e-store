@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ShippingAddress } from 'shared/models/shipping-address';
@@ -12,6 +12,7 @@ import { ShippingService } from 'shared/services/shipping/shipping.service';
   styleUrls: ['./shipping-form.component.scss']
 })
 export class ShippingFormComponent implements OnInit {
+  @ViewChild('f', { static: true }) form: ElementRef;
   @Input('shoppingCart') shoppingCart: ShoppingCart;
   shippingAddress: ShippingAddress = new ShippingAddress();
 
