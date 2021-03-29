@@ -5,6 +5,8 @@ import { CategoryService } from 'shared/services/category/category.service';
 import { ProductService } from 'shared/services/product/product.service';
 import { take } from 'rxjs/operators';
 import { IngredientsService } from 'shared/services/ingredients.service';
+import { Subscription } from 'rxjs';
+import { Product } from 'shared/models/product';
 
 
 @Component({
@@ -14,7 +16,10 @@ import { IngredientsService } from 'shared/services/ingredients.service';
 })
 export class IngredientFormComponent {
   categories$;
-  products$;
+  products: Product[];
+  filteredProducts: Product[] = [];
+  productsSubscription: Subscription;
+
   id: string;
   ingredient: Ingredient = {} as Ingredient;
 
@@ -26,7 +31,9 @@ export class IngredientFormComponent {
     private route: ActivatedRoute
   ) {
     this.categories$ = this.categoryService.getAll();  
-    this.products$ = this.productService.getAll();
+    this.productsSubscription = this.productService.getAll().subscribe(products => {
+      this.products = this.filteredProducts = products;
+    })
 
     this.id = this.route.snapshot.paramMap.get('id');
     
@@ -56,5 +63,9 @@ export class IngredientFormComponent {
       .then(() => this.router.navigate(['/admin/ingredients']))
       .catch(err => console.log(err));
     
+  }
+
+  filterProductsByCategory(category: string) {
+    this.filteredProducts = this.products.filter(p => p.category.toLowerCase() == category.toLowerCase());
   }
 }

@@ -24,6 +24,7 @@
           name="category"
           id="category"
           class="form-control"
+          (change)="filterProductsByCategory(cat.value)"
           required
         >
           <option value=""></option>
@@ -50,7 +51,7 @@
         >
           <option value=""></option>
           <option
-            *ngFor="let product of products$ | async"
+            *ngFor="let product of filteredProducts"
             value="{{ product.key }}"
           >
             {{ product.title }}
