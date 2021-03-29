@@ -1,35 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Product } from 'shared/models/product';
+
+import { DataService } from '../data/data.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductService extends DataService<Product> {
 
-  constructor(private db: AngularFireDatabase) { }
-  
-  get(productId: string) {
-    return this.db.object(`/products/${productId}`).valueChanges() as Observable<Product>;
+  constructor(db: AngularFireDatabase) {
+    super(db, 'products');
   }
   
-  getAll() {
-    return this.db.list('/products').snapshotChanges().pipe(
-      map(c => c.map(c => ({ key: c.payload.key, ...c.payload.val() as any })))
-      );
-    }
-
-  create(product: Product) {
-      return this.db.list(`/products`).push(product);
-  }
-
-  update(productId, product) {
-    return this.db.object(`products/${productId}`).update(product);
-  }
-
-  delete(productId) {
-    return this.db.object(`products/${productId}`).remove();
-  }
 }

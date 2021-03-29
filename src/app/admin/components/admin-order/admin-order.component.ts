@@ -16,7 +16,7 @@ export class AdminOrderComponent {
     private route: ActivatedRoute,
     private orderService: OrderService) {
       this.orderId = this.route.snapshot.paramMap.get('id');
-      this.order$ = this.orderService.getOrder(this.orderId);
+      this.order$ = this.orderService.get(this.orderId);
   }
 
 }
