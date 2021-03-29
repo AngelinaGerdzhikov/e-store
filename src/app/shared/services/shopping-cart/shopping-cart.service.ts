@@ -21,8 +21,8 @@ export class ShoppingCartService {
     );
   }
   
-  async addToCart(product: Product) {
-    return this.updateItemQuantity(product, 1);
+  async addToCart(product: Product, quantity: number = 1) {
+    return this.updateItemQuantity(product, quantity);
   }
   
   async removeFromCart(product: Product) {
