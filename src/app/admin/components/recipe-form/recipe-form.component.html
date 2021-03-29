@@ -5,7 +5,7 @@
         <label for="title">Title</label>
         <input
           #title="ngModel"
-          [(ngModel)]="recipe.title"
+          [(ngModel)]="data.title"
           name="title"
           id="title"
           type="text"
@@ -20,7 +20,7 @@
         <label for="imageUrl">Image URL</label>
         <input
           #imageUrl="ngModel"
-          [(ngModel)]="recipe.imageUrl"
+          [(ngModel)]="data.imageUrl"
           name="imageUrl"
           id="imageUrl"
           type="text"
@@ -37,7 +37,7 @@
         <label for="category">Category</label>
         <select
           #cat="ngModel"
-          [(ngModel)]="recipe.category"
+          [(ngModel)]="data.category"
           name="category"
           id="category"
           class="form-control"
@@ -59,7 +59,7 @@
         <label for="description">Description</label>
         <textarea
           #descriptionField="ngModel"
-          [(ngModel)]="recipe.description"
+          [(ngModel)]="data.description"
           name="description"
           id="description"
           class="form-control"
@@ -77,7 +77,7 @@
         <label for="directions">Directions</label>
         <textarea
           #directionsField="ngModel"
-          [(ngModel)]="recipe.directions"
+          [(ngModel)]="data.directions"
           name="directions"
           id="directions"
           class="form-control"
@@ -94,13 +94,13 @@
       <div class="form-group">
         <label for="ingredients">Ingredients</label>
         <ul class="list-group">
-          <li *ngFor="let ingredient of recipe.ingredients" class="list-group-item">
+          <li *ngFor="let ingredient of data.ingredients" class="list-group-item">
             <p>{{ ingredient.name }} x {{ ingredient.quantity }}</p>
           </li>
         </ul>
         <select
           #ingredientsField="ngModel"
-          [(ngModel)]="recipe.ingredients"
+          [(ngModel)]="data.ingredients"
           name="ingredients"
           id="ingredients"
           class="form-control"

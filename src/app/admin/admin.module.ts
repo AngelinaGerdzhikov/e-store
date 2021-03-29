@@ -25,7 +25,7 @@ import { AdminGuard } from './services/admin-guard/admin-guard.service';
     RecipeFormComponent,
     AdminIngredientsComponent,
     IngredientFormComponent,
-    AddRecipeIngredientComponent
+    AddRecipeIngredientComponent,
   ],
   imports: [
     SharedModule,

@@ -5,7 +5,7 @@
         <label for="title">Title</label>
         <input
           #title="ngModel"
-          [(ngModel)]="product.title"
+          [(ngModel)]="data.title"
           name="title"
           id="title"
           type="text"
@@ -20,7 +20,7 @@
         <label for="description">Description</label>
         <textarea
           #description="ngModel"
-          [(ngModel)]="product.description"
+          [(ngModel)]="data.description"
           name="description"
           id="description"
           class="form-control"
@@ -40,7 +40,7 @@
           <span class="input-group-text">$</span>
           <input
             #price="ngModel"
-            [(ngModel)]="product.price"
+            [(ngModel)]="data.price"
             name="price"
             id="price"
             type="number"
@@ -58,7 +58,7 @@
         <label for="category">Category</label>
         <select
           #cat="ngModel"
-          [(ngModel)]="product.category"
+          [(ngModel)]="data.category"
           name="category"
           id="category"
           class="form-control"
@@ -80,7 +80,7 @@
         <label for="imageUrl">Image URL</label>
         <input
           #imageUrl="ngModel"
-          [(ngModel)]="product.imageUrl"
+          [(ngModel)]="data.imageUrl"
           name="imageUrl"
           id="imageUrl"
           type="text"
@@ -99,7 +99,7 @@
   </div>
   <div class="col-md-6">
     <aside>
-      <product-card [product]="product" [showActions]="false"></product-card>
+      <product-card [product]="data" [showActions]="false"></product-card>
     </aside>
   </div>
 </div>
