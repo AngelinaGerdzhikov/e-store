@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'shared/services/auth-guard/auth-guard.service';
+import { AdminIngredientsComponent } from './components/admin-ingredients/admin-ingredients.component';
 import { AdminOrderComponent } from './components/admin-order/admin-order.component';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 import { AdminRecipesComponent } from './components/admin-recipes/admin-recipes.component';
+import { IngredientFormComponent } from './components/ingredient-form/ingredient-form.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { AdminGuard } from './services/admin-guard/admin-guard.service';
@@ -51,6 +53,21 @@ const routes: Routes = [
       {
         path: 'recipes',
         component: AdminRecipesComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'ingredients/new',
+        component: IngredientFormComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'ingredients/:id',
+        component: IngredientFormComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'ingredients',
+        component: AdminIngredientsComponent,
         canActivate: [AuthGuard, AdminGuard]
       }
     ]  

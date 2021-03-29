@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RecipeCategory } from 'app/recipes/models/recipe-category';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { Ingredient } from 'shared/models/ingredient';
 import { Recipe } from 'shared/models/recipe';
-import { AuthService } from 'shared/services/auth/auth.service';
+import { RecipeCategoriesService } from 'shared/services/recipe-categories/recipe-categories.service';
 import { RecipesService } from 'shared/services/recipes/recipes.service';
+
 
 @Component({
   selector: 'app-recipe-form',
@@ -12,28 +17,43 @@ import { RecipesService } from 'shared/services/recipes/recipes.service';
 export class RecipeFormComponent implements OnInit {
   private userDisplayName: string;
   private userUid: string;
+  
+  id: string;
+  recipeCategories$: Observable<RecipeCategory[]>;
+  recipe: Recipe = new Recipe();
 
   constructor(
-    private auth: AuthService,
-    private recipesService: RecipesService
+    private recipesService: RecipesService,
+    private recipeCategoryService: RecipeCategoriesService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(user => {
-      this.userDisplayName = user.displayName;
-      this.userUid = user.uid;
-    })
+    this.recipeCategories$ = this.recipeCategoryService.getAll();
+
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
+      this.recipesService.get(this.id)
+        .pipe(take(1))
+        .subscribe(recipe => this.recipe = new Recipe(recipe));
+    }
   }
 
-  createRecipe() {
-    this.recipesService.create(new Recipe(
-      'Delicious Recipe',
-      `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-      "https://static01.nyt.com/images/2013/06/26/dining/26JPFLEX1/26JPFLEX1-articleLarge-v3.jpg",
-      [new Ingredient('carrots', 2)],
-      this.userDisplayName,
-      this.userUid
-    ))
+  onIngredientAdded(ingredient: Ingredient) {
+    this.recipe.addIngredient(ingredient);
+  }
+
+  save(recipe: Recipe) {
+    if (this.id) {
+      this.recipesService.update(this.id, recipe)
+        .then(() => this.router.navigate(['/admin/recipes']))
+        .catch(err => console.log(err));
+    } else {
+      this.recipesService.create(this.recipe)
+        .then(() => this.router.navigate(['/admin/recipes']))
+        .catch(err => console.log(err));     
+    }
   }
 
 }

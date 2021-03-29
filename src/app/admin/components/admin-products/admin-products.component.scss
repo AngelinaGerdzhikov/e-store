@@ -13,3 +13,10 @@ th[sortable].desc:before {
   transform: rotate(180deg);
   -ms-transform: rotate(180deg);
 }
+
+.product-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  object-fit: cover;
+}

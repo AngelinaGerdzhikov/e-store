@@ -3,14 +3,25 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Recipe } from 'shared/models/recipe';
+import { AuthService } from '../auth/auth.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipesService {
+  private userDisplayName: string;
+  private userUid: string;
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(
+    private auth: AuthService,
+    private db: AngularFireDatabase
+  ) { 
+    this.auth.user$.subscribe(user => {
+      this.userDisplayName = user.displayName;
+      this.userUid = user.uid;
+    })
+  }
 
   get(recipeId: string) {
     return this.db.object(`/recipes/${recipeId}`).valueChanges() as Observable<Recipe>;
@@ -23,6 +34,8 @@ export class RecipesService {
     }
 
   create(recipe: Recipe) {
+    recipe.authorDisplayName = this.userDisplayName;
+    recipe.authorUid = this.userUid;
     return this.db.list(`/recipes`).push(recipe);
   }
 

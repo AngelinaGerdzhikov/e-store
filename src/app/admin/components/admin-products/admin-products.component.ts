@@ -20,7 +20,7 @@ export class AdminProductsComponent implements OnDestroy {
   finalProducts: Product[] = [];
 
   page = 1;
-  pageSize = 6;
+  pageSize = 30;
   collectionSize: number;
 
   constructor(private productService: ProductService) {
