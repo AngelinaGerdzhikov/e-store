@@ -5,7 +5,7 @@
         <label for="name">Name</label>
         <input
           #name="ngModel"
-          [(ngModel)]="ingredient.name"
+          [(ngModel)]="data.name"
           name="name"
           id="name"
           type="text"
@@ -20,7 +20,7 @@
         <label for="category">Category</label>
         <select
           #cat="ngModel"
-          [(ngModel)]="ingredient.category"
+          [(ngModel)]="data.category"
           name="category"
           id="category"
           class="form-control"
@@ -43,7 +43,7 @@
         <label for="productUid">Related product</label>
         <select
           #productField="ngModel"
-          [(ngModel)]="ingredient.productUid"
+          [(ngModel)]="data.productUid"
           name="productUid"
           id="productUid"
           class="form-control"
