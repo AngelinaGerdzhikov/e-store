@@ -10,17 +10,7 @@ export class Recipe {
   public ingredients?: Ingredient[];
   public authorDisplayName?: string;
   public authorUid?: string;
-
-  // consctructor(
-  //   init?: Partial<Recipe>,
-  //   authorDisplayName?: string,
-  //   authorUid?: string)
-  // {
-  //   Object.assign(this, init);
-  //   this.datePublished = new Date().getTime();
-  //   this.authorDisplayName = authorDisplayName || '';
-  //   this.authorUid = authorUid || '';
-  // }
+  
   constructor(
     init?: Partial<Recipe>,
     authorDisplayName?: string,

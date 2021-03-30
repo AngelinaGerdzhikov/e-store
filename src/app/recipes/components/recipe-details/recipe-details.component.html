@@ -5,7 +5,7 @@
   <hr>
   <p>{{ recipe?.authorDisplayName }}</p>
   <ul class="list-group">
-    <li *ngFor="let ingredient of recipe.ingredients" class="list-group-item">
+    <li *ngFor="let ingredient of recipe?.ingredients" class="list-group-item">
       <p>{{ ingredient.name }} x {{ ingredient.quantity }}</p> 
       <button class="btn btn-primary" (click)="addIngredientToShoppingCart(ingredient)">Add to cart</button>
     </li>

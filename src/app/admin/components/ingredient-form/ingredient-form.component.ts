@@ -28,13 +28,11 @@ export class IngredientFormComponent extends AdminFormComponent<Ingredient> impl
     route: ActivatedRoute,
     ingredientService: IngredientsService
   ) {
-    super(router, route, ingredientService);
+    super(router, route, ingredientService, Ingredient);
     this.url = 'ingredients';
-
     this.categories$ = this.categoryService.getAll();  
-    this.productsSubscription = this.productService.getAll().subscribe(products => {
-      this.products = this.filteredProducts = products;
-    })
+    this.productsSubscription = this.productService.getAll()
+      .subscribe(products => this.products = this.filteredProducts = products);
   }
 
   filterProductsByCategory(category: string) {
