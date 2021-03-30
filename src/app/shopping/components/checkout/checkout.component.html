@@ -3,7 +3,7 @@
     <h2>Shipping</h2>
     <shipping-form #shippingForm [shoppingCart]="shoppingCart"></shipping-form>
     <button
-      [disabled]="!shippingForm.f"
+      [disabled]="!shippingForm.form.valid"
       class="btn btn-primary"
       (click)="placeOrder(shippingForm.shippingAddress, shoppingCart.items)">Place Order</button>
   </div>

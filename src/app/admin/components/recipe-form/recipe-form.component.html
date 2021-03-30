@@ -1,0 +1,120 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm"  (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          #title="ngModel"
+          [(ngModel)]="data.title"
+          name="title"
+          id="title"
+          type="text"
+          class="form-control"
+          required
+        >
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+          Title is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input
+          #imageUrl="ngModel"
+          [(ngModel)]="data.imageUrl"
+          name="imageUrl"
+          id="imageUrl"
+          type="text"
+          url-validator
+          class="form-control"
+          required
+        >
+      </div>
+      <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+        <div *ngIf="imageUrl.errors.required">Adding an image url is required</div>
+        <div *ngIf="imageUrl.errors.url && !imageUrl.errors.required">Please add a valid image url.</div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select
+          #cat="ngModel"
+          [(ngModel)]="data.category"
+          name="category"
+          id="category"
+          class="form-control"
+          required
+        >
+          <option value=""></option>
+          <option
+            *ngFor="let category of recipeCategories$ | async"
+            value="{{ category.name }}"
+          >
+            {{ category.name }}
+          </option>
+        </select>
+        <div class="alert alert-danger" *ngIf="cat.touched && cat.invalid">
+          Selecting a category is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          #descriptionField="ngModel"
+          [(ngModel)]="data.description"
+          name="description"
+          id="description"
+          class="form-control"
+          minlength="40"
+          maxlength="160"
+          required
+        ></textarea>
+        <div class="alert alert-danger" *ngIf="descriptionField.touched && descriptionField.invalid">
+          <div *ngIf="descriptionField.errors.required">Description is required</div>
+          <div *ngIf="descriptionField.errors.minlength">Description should be more than 40 characters.</div>
+          <div *ngIf="descriptionField.errors.maxlength">Description should be less than 160 characters.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="directions">Directions</label>
+        <textarea
+          #directionsField="ngModel"
+          [(ngModel)]="data.directions"
+          name="directions"
+          id="directions"
+          class="form-control"
+          minlength="40"
+          maxlength="160"
+          required
+        ></textarea>
+        <div class="alert alert-danger" *ngIf="directionsField.touched && directionsField.invalid">
+          <div *ngIf="directionsField.errors.required">Directions are required</div>
+          <div *ngIf="directionsField.errors.minlength">Directions should be more than 40 characters.</div>
+          <div *ngIf="directionsField.errors.maxlength">directions should be less than 160 characters.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ingredients">Ingredients</label>
+        <ul class="list-group">
+          <li *ngFor="let ingredient of data.ingredients" class="list-group-item">
+            <p>{{ ingredient.name }} x {{ ingredient.quantity }}</p>
+          </li>
+        </ul>
+        <select
+          #ingredientsField="ngModel"
+          [(ngModel)]="data.ingredients"
+          name="ingredients"
+          id="ingredients"
+          class="form-control"
+          hidden
+          ></select>
+        <add-recipe-ingredient (ingredientAdded)="onIngredientAdded($event)"></add-recipe-ingredient>
+      </div>      
+      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Save</button>
+      <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
+    </form>    
+  </div>
+  <div class="col-md-6">
+    <aside>
+      <!-- <product-card [product]="product" [showActions]="false"></product-card> -->
+    </aside>
+  </div>
+</div>

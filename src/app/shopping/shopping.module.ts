@@ -13,7 +13,6 @@ import { ShippingFormComponent } from './components/shipping-form/shipping-form.
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingRoutingModule } from './shopping-routing.module';
-import { ShoppingListsComponent } from './components/shopping-lists/shopping-lists.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { ShoppingListsComponent } from './components/shopping-lists/shopping-lis
     OrderSuccessComponent,
     MyOrdersComponent,
     ShippingFormComponent,
-    ShoppingCartSummaryComponent,
-    ShoppingListsComponent
+    ShoppingCartSummaryComponent
   ],
   imports: [
     CommonModule,

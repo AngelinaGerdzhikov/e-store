@@ -1,0 +1,13 @@
+<div class="row">
+  <img [src]="recipe?.imageUrl" [alt]="recipe?.title" width="200px">
+  <h1>{{ recipe?.title }}</h1>
+  <p>{{ recipe?.description }}</p>
+  <hr>
+  <p>{{ recipe?.authorDisplayName }}</p>
+  <ul class="list-group">
+    <li *ngFor="let ingredient of recipe?.ingredients" class="list-group-item">
+      <p>{{ ingredient.name }} x {{ ingredient.quantity }}</p> 
+      <button class="btn btn-primary" (click)="addIngredientToShoppingCart(ingredient)">Add to cart</button>
+    </li>
+  </ul>
+</div>

@@ -7,8 +7,6 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
-import { ShoppingListsComponent } from './components/shopping-lists/shopping-lists.component';
 
 const routes: Routes = [
   // Anonymous user routes
@@ -23,11 +21,6 @@ const routes: Routes = [
   {
     path: 'shopping-cart',
     component: ShoppingCartComponent
-  },
-  {
-    path: 'shopping-list',
-    component: ShoppingListComponent,
-    canActivate: [AuthGuard]
   },
 
   // User routes
@@ -44,11 +37,6 @@ const routes: Routes = [
   {
     path: 'my/orders',
     component: MyOrdersComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'my/shopping-lists',
-    component: ShoppingListsComponent,
     canActivate: [AuthGuard]
   }
 ];

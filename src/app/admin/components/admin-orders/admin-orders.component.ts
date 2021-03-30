@@ -16,6 +16,6 @@ export class AdminOrdersComponent {
   collectionSize: number;
 
   constructor(orderService: OrderService) { 
-    this.orders$ = orderService.getOrders();
+    this.orders$ = orderService.getAll();
   }
 }

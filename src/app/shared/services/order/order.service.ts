@@ -3,30 +3,23 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Order } from 'shared/models/order';
 import { ShoppingCartService } from 'shared/services/shopping-cart/shopping-cart.service';
 import { map } from 'rxjs/operators';
+import { DataService } from '../data/data.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
+export class OrderService extends DataService<Order> {
 
   constructor(
-    private db: AngularFireDatabase,
-    private shoppingCartService: ShoppingCartService
-  ) { }
-
-  getOrders() {
-    return this.db.list('/orders').snapshotChanges().pipe(
-      map(c => c.map(c => ({ key: c.payload.key, ...c.payload.val() as any })))
-      );
-  }
-
-  getOrder(key: string) {
-    return this.db.object(`/orders/${key}`).valueChanges();
+    private shoppingCartService: ShoppingCartService,
+    db: AngularFireDatabase
+  ) { 
+    super(db, 'orders');
   }
 
   getOrdersByUser(userId: string) {
-    return this.db.list(`/orders/`,
+    return super.db.list(`/orders/`,
       ref => ref.orderByChild('userId').equalTo(userId)
     ).snapshotChanges().pipe(
       map(c => c.map(c => ({ key: c.payload.key, ...c.payload.val() as any })))
@@ -34,7 +27,7 @@ export class OrderService {
   }
 
   async placeOrder(order: Order) {
-    let result = await this.db.list(`/orders`).push(order);
+    let result = await super.db.list(`/orders`).push(order);
     this.shoppingCartService.clearCart();
     return result;
   }

@@ -1,0 +1,28 @@
+
+<form #iForm="ngForm" (ngSubmit)="addIngredient(iForm.value.ingredient)">
+  <select
+    #ingredientField="ngModel"
+    [(ngModel)]="ingredient"
+    name="ingredient"
+    id="ingredient"
+    class="form-control"
+    required
+  >
+    <option value="" disabled>Select ingredient</option>
+    <option
+      *ngFor="let i of ingredients$ | async"
+      [ngValue]="i"
+    >{{ i.name }}</option>
+  </select>
+  <input
+    #ingredientQuantityField="ngModel"
+    [(ngModel)]="ingredient.quantity"
+    name="quantity"
+    id="quantity"
+    type="number"
+    class="form-control"
+    placeholder="Write ingredient quantity"
+    required
+  >
+  <button class="btn btn-default" type="submit">Add</button>
+</form>
