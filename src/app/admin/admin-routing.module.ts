@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'shared/services/auth-guard/auth-guard.service';
+import { CanDeactivateGuardService } from 'shared/services/can-deactivate-guard/can-deactivate-guard.service';
 import { AdminIngredientsComponent } from './components/admin-ingredients/admin-ingredients.component';
 import { AdminOrderComponent } from './components/admin-order/admin-order.component';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
@@ -14,61 +15,57 @@ import { AdminGuard } from './services/admin-guard/admin-guard.service';
 const routes: Routes = [
   {
     path: 'admin',
+    canActivate: [AuthGuard, AdminGuard],
     children: [
       {
-      path: 'products/new',
-      component: ProductFormComponent,
-      canActivate: [AuthGuard, AdminGuard]
+        path: 'products/new',
+        component: ProductFormComponent,
+        canDeactivate: [ CanDeactivateGuardService ]
       },
       {
         path: 'products/:id',
         component: ProductFormComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        canDeactivate: [ CanDeactivateGuardService ]
       },
       {
         path: 'products',
         component: AdminProductsComponent,
-        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'orders/:id',
         component: AdminOrderComponent,
-        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'orders',
         component: AdminOrdersComponent,
-        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'recipes/new',
         component: RecipeFormComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        canDeactivate: [ CanDeactivateGuardService ]
       },
       {
         path: 'recipes/:id',
         component: RecipeFormComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        canDeactivate: [ CanDeactivateGuardService ]
       },
       {
         path: 'recipes',
         component: AdminRecipesComponent,
-        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'ingredients/new',
         component: IngredientFormComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        canDeactivate: [ CanDeactivateGuardService ]
       },
       {
         path: 'ingredients/:id',
         component: IngredientFormComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        canDeactivate: [ CanDeactivateGuardService ]
       },
       {
         path: 'ingredients',
         component: AdminIngredientsComponent,
-        canActivate: [AuthGuard, AdminGuard]
       }
     ]  
   }

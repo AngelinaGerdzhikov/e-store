@@ -19,7 +19,7 @@ export class OrderService extends DataService<Order> {
   }
 
   getOrdersByUser(userId: string) {
-    return super.db.list(`/orders/`,
+    return this.db.list(`/orders/`,
       ref => ref.orderByChild('userId').equalTo(userId)
     ).snapshotChanges().pipe(
       map(c => c.map(c => ({ key: c.payload.key, ...c.payload.val() as any })))
@@ -27,7 +27,7 @@ export class OrderService extends DataService<Order> {
   }
 
   async placeOrder(order: Order) {
-    let result = await super.db.list(`/orders`).push(order);
+    let result = await this.db.list(`/orders`).push(order);
     this.shoppingCartService.clearCart();
     return result;
   }

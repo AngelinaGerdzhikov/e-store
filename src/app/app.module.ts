@@ -23,9 +23,9 @@ import { ShoppingModule } from './shopping/shopping.module';
     ShoppingModule,
     RecipesModule,
     AdminModule,
-    AppRoutingModule,
     CoreModule,
-    MembershipModule
+    MembershipModule,
+    AppRoutingModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]
