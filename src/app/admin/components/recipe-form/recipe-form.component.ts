@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeCategory } from 'app/recipes/models/recipe-category';
 import { Observable } from 'rxjs';
@@ -16,6 +17,7 @@ import { AdminFormComponent } from '../admin-form/admin-form.component';
   styleUrls: ['./recipe-form.component.scss']
 })
 export class RecipeFormComponent extends AdminFormComponent<Recipe> {  
+  @ViewChild('f', { static: true }) form: NgForm;
   recipeCategories$: Observable<RecipeCategory[]>;
 
   constructor(
@@ -30,6 +32,10 @@ export class RecipeFormComponent extends AdminFormComponent<Recipe> {
   }
 
   onIngredientAdded(ingredient: Ingredient) {
-    this.data.addIngredient(ingredient);
+    let ingredientsControl = this.form.control.get('ingredients');
+    ingredientsControl.value.push(ingredient);
+    ingredientsControl.markAsDirty();
+
+    // this.data.addIngredient(ingredient);
   }
 }
