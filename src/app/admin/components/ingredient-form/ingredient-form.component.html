@@ -1,68 +1,44 @@
 <div class="row">
   <div class="col-md-6">
-    <form #f="ngForm"  (ngSubmit)="save(f.value)">
+    <form [formGroup]="dataForm" (ngSubmit)="save()">
       <div class="form-group">
         <label for="name">Name</label>
-        <input
-          #name="ngModel"
-          [(ngModel)]="data.name"
-          name="name"
-          id="name"
-          type="text"
-          class="form-control"
-          required
-        >
-        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+        <input formControlName="name" id="name" type="text" class="form-control">
+        <!-- <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
           Name is required
-        </div>
+        </div> -->
       </div>
       <div class="form-group">
         <label for="category">Category</label>
         <select
-          #cat="ngModel"
-          [(ngModel)]="data.category"
-          name="category"
+          formControlName="category"
           id="category"
-          class="form-control"
-          (change)="filterProductsByCategory(cat.value)"
-          required
-        >
-          <option value=""></option>
-          <option
-            *ngFor="let category of categories$ | async"
-            value="{{ category.name }}"
-          >
-            {{ category.name }}
-          </option>
+          (change)="filterProductsByCategory()"
+          class="form-control">
+            <option value=""></option>
+            <option
+              *ngFor="let category of categories$ | async"
+              value="{{ category.name }}">{{ category.name }}</option>
         </select>
-        <div class="alert alert-danger" *ngIf="cat.touched && cat.invalid">
+        <!-- <div class="alert alert-danger" *ngIf="cat.touched && cat.invalid">
           Selecting a category is required
-        </div>
+        </div> -->
       </div>
       <div class="form-group">
         <label for="productUid">Related product</label>
-        <select
-          #productField="ngModel"
-          [(ngModel)]="data.productUid"
-          name="productUid"
-          id="productUid"
-          class="form-control"
-          required
-        >
-          <option value=""></option>
+        <select formControlName="productUid" id="productUid"        class="form-control">
+          <option value="">Select related product</option>
           <option
             *ngFor="let product of filteredProducts"
             value="{{ product.key }}"
-          >
-            {{ product.title }}
-          </option>
+          >{{ product.title }}</option>
         </select>
-        <div class="alert alert-danger" *ngIf="productField.touched && productField.invalid">
+        <!-- <div class="alert alert-danger" *ngIf="productField.touched && productField.invalid">
           Selecting a related product is required
-        </div>
+        </div> -->
       </div>
       
-      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Save</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid">Save</button>
       <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
     </form>    
   </div>

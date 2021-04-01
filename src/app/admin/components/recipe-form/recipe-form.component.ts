@@ -1,27 +1,30 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnDestroy } from '@angular/core';
+import { FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeCategory } from 'app/recipes/models/recipe-category';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Ingredient } from 'shared/models/ingredient';
 import { Recipe } from 'shared/models/recipe';
+import { IngredientsService } from 'shared/services/ingredients.service';
 import { RecipeCategoriesService } from 'shared/services/recipe-categories/recipe-categories.service';
 import { RecipesService } from 'shared/services/recipes/recipes.service';
 
 import { AdminFormComponent } from '../admin-form/admin-form.component';
-
+import { RecipeFormCreator } from './recipe-form-creator';
 
 @Component({
   selector: 'app-recipe-form',
   templateUrl: './recipe-form.component.html',
   styleUrls: ['./recipe-form.component.scss']
 })
-export class RecipeFormComponent extends AdminFormComponent<Recipe> {  
-  @ViewChild('f', { static: true }) form: NgForm;
+export class RecipeFormComponent extends AdminFormComponent<Recipe> implements OnDestroy {  
   recipeCategories$: Observable<RecipeCategory[]>;
+  ingredients: Ingredient[];
+  ingredientSubscription: Subscription;
 
   constructor(
     private recipeCategoryService: RecipeCategoriesService,
+    private ingredientService: IngredientsService,
     router: Router,
     route: ActivatedRoute,
     recipesService: RecipesService
@@ -29,13 +32,33 @@ export class RecipeFormComponent extends AdminFormComponent<Recipe> {
     super(router, route, recipesService, Recipe);
     this.url = 'recipes';
     this.recipeCategories$ = this.recipeCategoryService.getAll();
+    this.ingredientSubscription = 
+      this.ingredientService.getAll().subscribe(ingredients => this.ingredients = ingredients);
+  }
+  
+  get ingredientFormArray() {
+    return (<FormArray>this.dataForm.get('ingredients'));
+  }
+      
+  createForm() {
+    this.dataForm = RecipeFormCreator.createForm();
   }
 
-  onIngredientAdded(ingredient: Ingredient) {
-    let ingredientsControl = this.form.control.get('ingredients');
-    ingredientsControl.value.push(ingredient);
-    ingredientsControl.markAsDirty();
+  populateForm(data: Recipe) {
+    RecipeFormCreator.createIngredientsControlArray(data.ingredients, this.ingredientFormArray);
+  }
 
-    // this.data.addIngredient(ingredient);
+  onAddIngredient() {
+    this.ingredientFormArray.push(RecipeFormCreator.createIngredientControl());
+  }
+
+  onIngredientSelected(ingredientOptionIndex, ingredientControlIndex) {
+    let ingredientControl = this.ingredientFormArray.controls[ingredientControlIndex];
+    let ingredientOption = this.ingredients[ingredientOptionIndex];
+    ingredientControl.patchValue(ingredientOption);
+  }
+
+  ngOnDestroy() {
+    this.ingredientSubscription.unsubscribe();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Ingredient } from 'shared/models/ingredient';
@@ -35,7 +36,16 @@ export class IngredientFormComponent extends AdminFormComponent<Ingredient> impl
       .subscribe(products => this.products = this.filteredProducts = products);
   }
 
-  filterProductsByCategory(category: string) {
+  createForm() {
+    this.dataForm = new FormGroup({
+      'name': new FormControl(null, Validators.required),
+      'category': new FormControl(null, Validators.required),
+      'productUid': new FormControl(null, Validators.required)
+    })
+  }
+
+  filterProductsByCategory() {
+    let category = this.dataForm.get('category').value;
     this.filteredProducts = this.products.filter(p => p.category.toLowerCase() == category.toLowerCase());
   }
 

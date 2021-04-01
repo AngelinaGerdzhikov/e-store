@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'shared/shared.module';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -29,6 +30,7 @@ import { AdminGuard } from './services/admin-guard/admin-guard.service';
   ],
   imports: [
     SharedModule,
+    ReactiveFormsModule,
     AdminRoutingModule
   ],
   providers: [

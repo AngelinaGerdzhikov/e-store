@@ -1,114 +1,79 @@
 <div class="row">
   <div class="col-md-6">
-    <form #f="ngForm"  (ngSubmit)="save(f.value)">
+    <form [formGroup]="dataForm" (ngSubmit)="save()">
       <div class="form-group">
         <label for="title">Title</label>
-        <input
-          #title="ngModel"
-          [(ngModel)]="data.title"
-          name="title"
-          id="title"
-          type="text"
-          class="form-control"
-          required
-        >
-        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-          Title is required
-        </div>
+        <input formControlName="title" id="title" type="text" class="form-control">
+        <!-- <div class="alert alert-danger" *ngIf="title.touched && title.invalid">Title is required</div> -->
       </div>
       <div class="form-group">
         <label for="imageUrl">Image URL</label>
-        <input
-          #imageUrl="ngModel"
-          [(ngModel)]="data.imageUrl"
-          name="imageUrl"
-          id="imageUrl"
-          type="text"
-          url-validator
-          class="form-control"
-          required
-        >
+        <input formControlName="imageUrl" id="imageUrl" type="text" class="form-control">
       </div>
-      <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+      <!-- <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
         <div *ngIf="imageUrl.errors.required">Adding an image url is required</div>
         <div *ngIf="imageUrl.errors.url && !imageUrl.errors.required">Please add a valid image url.</div>
-      </div>
+      </div> -->
       <div class="form-group">
         <label for="category">Category</label>
-        <select
-          #cat="ngModel"
-          [(ngModel)]="data.category"
-          name="category"
-          id="category"
-          class="form-control"
-          required
-        >
+        <select formControlName="category" id="category" class="form-control">
           <option value=""></option>
-          <option
-            *ngFor="let category of recipeCategories$ | async"
-            value="{{ category.name }}"
-          >
+          <option *ngFor="let category of recipeCategories$ | async" value="{{ category.name }}">
             {{ category.name }}
           </option>
         </select>
-        <div class="alert alert-danger" *ngIf="cat.touched && cat.invalid">
+        <!-- <div class="alert alert-danger" *ngIf="cat.touched && cat.invalid">
           Selecting a category is required
-        </div>
+        </div> -->
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea
-          #descriptionField="ngModel"
-          [(ngModel)]="data.description"
-          name="description"
-          id="description"
-          class="form-control"
-          minlength="40"
-          maxlength="160"
-          required
-        ></textarea>
-        <div class="alert alert-danger" *ngIf="descriptionField.touched && descriptionField.invalid">
+        <textarea formControlName="description" id="description" class="form-control" ></textarea>
+        <!-- <div class="alert alert-danger" *ngIf="descriptionField.touched && descriptionField.invalid">
           <div *ngIf="descriptionField.errors.required">Description is required</div>
           <div *ngIf="descriptionField.errors.minlength">Description should be more than 40 characters.</div>
           <div *ngIf="descriptionField.errors.maxlength">Description should be less than 160 characters.</div>
-        </div>
+        </div> -->
       </div>
       <div class="form-group">
         <label for="directions">Directions</label>
-        <textarea
-          #directionsField="ngModel"
-          [(ngModel)]="data.directions"
-          name="directions"
-          id="directions"
-          class="form-control"
-          minlength="40"
-          maxlength="160"
-          required
-        ></textarea>
-        <div class="alert alert-danger" *ngIf="directionsField.touched && directionsField.invalid">
+        <textarea formControlName="directions" id="directions" class="form-control"></textarea>
+        <!-- <div class="alert alert-danger" *ngIf="directionsField.touched && directionsField.invalid">
           <div *ngIf="directionsField.errors.required">Directions are required</div>
           <div *ngIf="directionsField.errors.minlength">Directions should be more than 40 characters.</div>
           <div *ngIf="directionsField.errors.maxlength">directions should be less than 160 characters.</div>
-        </div>
+        </div> -->
       </div>
-      <div class="form-group">
-        <label for="ingredients">Ingredients</label>
-        <ul class="list-group">
-          <li *ngFor="let ingredient of data.ingredients" class="list-group-item">
-            <p>{{ ingredient.name }} x {{ ingredient.quantity }}</p>
-          </li>
-        </ul>
-        <select
-          #ingredientsField="ngModel"
-          [(ngModel)]="data.ingredients"
-          name="ingredients"
-          id="ingredients"
-          class="form-control"
-          hidden
-          ></select>
-        <add-recipe-ingredient (ingredientAdded)="onIngredientAdded($event)"></add-recipe-ingredient>
+      <div formArrayName="ingredients">
+        <h4>Ingredients</h4>
+        <div
+          class="form-group"
+          *ngFor="let ingredientControl of ingredientFormArray.controls; let i = index">
+          <div [formGroup]="ingredientControl">
+            <input formControlName="name" hidden>
+            <input formControlName="productUid" hidden>
+            <input formControlName="category" hidden>
+            <input formControlName="key" hidden>
+
+            <select class="form-control" (change)="onIngredientSelected($event.target.value, i)">
+              <option value="">Select ingredient</option>
+              <option
+                *ngFor="let ing of ingredients; let k = index"
+                [value]="k"
+                [selected]="data.ingredients.length > 0 && data.ingredients[i].name === ing.name"
+              >{{ ing.name }}</option>
+            </select>
+
+            <input
+              formControlName="quantity"
+              type="number"
+              class="form-control"
+              placeholder="Write ingredient quantity">
+          </div>
+        </div>
+        <button class="btn btn-default" type="button" (click)="onAddIngredient()">Add Ingredient</button>
       </div>      
-      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Save</button>
+      <button class="btn btn-primary" type="submit" >Save</button>
       <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
     </form>    
   </div>
