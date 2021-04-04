@@ -59,5 +59,19 @@
     "productUid": {
       "required": "Please choose a related product"
     }
+  },
+  "shipping": {
+    "name": {
+      "required": "Please fill in a name associated with this shipping address"
+    },
+    "country": {
+      "required": "Please fill in country name"
+    },
+    "city": {
+      "required": "Please fill in city name"
+    },
+    "addressLine": {
+      "required": "Please fill in an address line"
+    }
   }
 }

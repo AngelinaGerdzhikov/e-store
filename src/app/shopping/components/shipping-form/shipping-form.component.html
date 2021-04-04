@@ -8,8 +8,8 @@
       placeholder="Name"
       type="text"
       class="form-control"
-      required
-    > 
+      required> 
+    <form-error [dataType]="'shipping'" [fControl]="name" [fControlName]="'name'"></form-error>
   </div>
   <div class="form-group">
     <label for="country">Country</label>
@@ -21,6 +21,7 @@
       type="text"
       class="form-control"
       required>
+    <form-error [dataType]="'shipping'" [fControl]="country" [fControlName]="'country'"></form-error>
   </div>
   <div class="form-group">
     <label for="city">City</label>
@@ -32,6 +33,7 @@
       type="text"
       class="form-control"
       required>
+    <form-error [dataType]="'shipping'" [fControl]="city" [fControlName]="'city'"></form-error>
   </div>
   <div class="form-group">
     <label for="addressLine">Address Line</label>
@@ -43,6 +45,7 @@
       type="text"
       class="form-control"
       required>
+    <form-error [dataType]="'shipping'" [fControl]="addressLine" [fControlName]="'addressLine'"></form-error>
   </div>
-  <button class="btn btn-light" (click)="saveAddress(f.value)">Save address</button>
+  <button class="btn btn-light" (click)="saveAddress(f.value)" [disabled]="!f.valid">Save address</button>
 </form>
