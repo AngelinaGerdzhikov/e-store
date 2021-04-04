@@ -22,6 +22,8 @@ import { DropdownDirective } from './directives/dropdown/dropdown.directive';
 import { RecipesService } from './services/recipes/recipes.service';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { IngredientCardComponent } from './components/ingredient-card/ingredient
     DropdownDirective,
     FormErrorComponent,
     RecipeCardComponent,
-    IngredientCardComponent
+    IngredientCardComponent,
+    ShortenPipe,
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -54,7 +58,9 @@ import { IngredientCardComponent } from './components/ingredient-card/ingredient
     DropdownDirective,
     FormErrorComponent,
     RecipeCardComponent,
-    IngredientCardComponent
+    IngredientCardComponent,
+    ShortenPipe,
+    FilterPipe
   ],
   providers: [
     AuthService,

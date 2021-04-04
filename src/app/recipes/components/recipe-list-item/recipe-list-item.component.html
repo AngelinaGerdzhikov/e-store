@@ -3,5 +3,5 @@
 </div>
 <div>
   <h4 class="list-group-item-heading">{{ recipe.title }}</h4>
-  <p class="list-group-item-text">{{ recipe.description | slice:0:140 }}</p>
+  <p class="list-group-item-text">{{ recipe.description | shorten: 140 }}</p>
 </div>

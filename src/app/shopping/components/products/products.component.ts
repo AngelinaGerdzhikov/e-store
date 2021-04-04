@@ -15,9 +15,7 @@ import { ShoppingCart } from 'shared/models/shopping-cart';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   private productSubscription: Subscription;
-  
   products: Product[] = [];
-  filteredProducts: Product[] = [];
   category: string;
 
   shoppingCart$: Observable<ShoppingCart>;
@@ -33,12 +31,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.populateProducts();    
   }
   
-  filterByCategory() {
-    this.filteredProducts = !this.category ?
-    this.products :
-    this.products.filter(p => p.category.toLowerCase() === this.category);
-  }
-  
   private populateProducts() {
     this.productSubscription = this.productService.getAll().pipe(
       switchMap(products => {
@@ -47,7 +39,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       })
     ).subscribe(params => {
       this.category = params.get('category');
-      this.filterByCategory();
     });  
   }
 
