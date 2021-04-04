@@ -9,9 +9,9 @@ import { RecipesService } from 'shared/services/recipes/recipes.service';
   styleUrls: ['./admin-recipes.component.scss']
 })
 export class AdminRecipesComponent implements OnDestroy {
-  private recipes: Recipe[];
   private subscription: Subscription;
-  displayRecipes: Recipe[];
+  recipes: Recipe[];
+  searchQuery: string = '';
 
   collectionSize: number;
   page = 1;
@@ -19,15 +19,9 @@ export class AdminRecipesComponent implements OnDestroy {
 
   constructor(private recipeService: RecipesService) {
     this.subscription = this.recipeService.getAll().subscribe(recipes => {
-      this.displayRecipes = this.recipes = recipes;
-      this.collectionSize = this.displayRecipes.length;
+      this.recipes = recipes;
+      this.collectionSize = this.recipes.length;
     } );
-  }
-
-  filter(query) {
-    this.displayRecipes = (query) ?
-      this.recipes.filter(r => r.title.toLowerCase().includes(query.toLowerCase())) :
-      this.recipes;
   }
 
   ngOnDestroy() {

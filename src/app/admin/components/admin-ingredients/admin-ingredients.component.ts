@@ -9,9 +9,9 @@ import { IngredientsService } from 'shared/services/ingredients.service';
   styleUrls: ['./admin-ingredients.component.scss']
 })
 export class AdminIngredientsComponent {
-  private ingredients: Ingredient[];
   private subscription: Subscription;
-  displayIngredients: Ingredient[];
+  ingredients: Ingredient[];
+  searchQuery: string;
 
   collectionSize: number;
   page = 1;
@@ -19,15 +19,9 @@ export class AdminIngredientsComponent {
 
   constructor(private ingredientsService: IngredientsService) {
     this.subscription = this.ingredientsService.getAll().subscribe(ingredients => {
-      this.displayIngredients = this.ingredients = ingredients;
-      this.collectionSize = this.displayIngredients.length;
+      this.ingredients = ingredients;
+      this.collectionSize = this.ingredients.length;
     } );
-  }
-
-  filter(query) {
-    this.displayIngredients = (query) ?
-      this.ingredients.filter(r => r.name.toLowerCase().includes(query.toLowerCase())) :
-      this.ingredients;
   }
 
   ngOnDestroy() {

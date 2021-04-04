@@ -6,8 +6,7 @@
 <div class="row">
   <div class="col-md-12">
     <input
-      #query
-      (keyup)="filter(query.value)"
+      [(ngModel)]="searchQuery"
       type="text"
       class="form-control"
       placeholder="Search..."
@@ -24,9 +23,11 @@
           <th scope="col"></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="ingredients">
         <tr
-          *ngFor="let ingredient of displayIngredients | slice: (page-1) * pageSize : page * pageSize; index as i">
+          *ngFor="let ingredient of ingredients
+          | filter: searchQuery : 'name'
+          | slice: (page-1) * pageSize : page * pageSize; index as i">
           <th scope="row"> {{ i + 1 }}</th>
           <td>{{ ingredient.name }}</td>
           <td>

@@ -15,6 +15,7 @@ export class AdminProductsComponent implements OnDestroy {
 
   private products: Product[] = [];
   private compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
+  searchQuery: string = '';
 
   subscription: Subscription;
   finalProducts: Product[] = [];
@@ -29,12 +30,6 @@ export class AdminProductsComponent implements OnDestroy {
         this.finalProducts = this.products = products; 
         this.collectionSize = this.finalProducts.length;
       });
-  }
-
-  filter(query) {
-    this.finalProducts = (query) ?
-      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
-      this.products;
   }
 
   onSort({column, direction}: SortEvent) {
