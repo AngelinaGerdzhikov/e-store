@@ -52,6 +52,12 @@ export class RecipeFormComponent extends AdminFormComponent<Recipe> implements O
     this.ingredientFormArray.push(RecipeFormCreator.createIngredientControl());
   }
 
+  onDeleteIngredient(index: number) {
+    this.ingredientFormArray.removeAt(index);
+    this.ingredientFormArray.markAsTouched();
+    // this.dataForm.get('ingredients').updateValueAndValidity();
+  }
+
   onIngredientSelected(ingredientOptionIndex, ingredientControlIndex) {
     let ingredientControl = this.ingredientFormArray.controls[ingredientControlIndex];
     let ingredientOption = this.ingredients[ingredientOptionIndex];

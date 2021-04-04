@@ -1,0 +1,3 @@
+<div *ngIf="fControl.invalid && fControl.touched && fControl.errors"class="alert alert-danger">
+  <p *ngFor="let errorMessage of errorMessages">{{ errorMessage }}</p>
+</div>

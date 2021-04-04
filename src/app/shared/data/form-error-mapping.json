@@ -1,0 +1,63 @@
+{
+  "recipe": {
+    "title": {
+      "required": "Please fill in a recipe title"
+    },
+    "imageUrl": {
+      "required": "Please add an image url",
+      "url": "Please fill in a valid url"
+    },
+    "category": {
+      "required": "Please choose a recipe category"
+    },
+    "description": {
+      "required": "Please add a recipe description",
+      "minlength": "Recipe description must be more than 40 characters long"
+    },
+    "directions": {
+      "required": "Please add recipe directions",
+      "minlength": "Recipe directions must be more than 40 characters long"
+    }, 
+    "ingredients": {
+      "required": "Please select recipe ingredients"
+    },
+    "ingredient": {
+      "required": "Please select an ingredient"
+    },
+    "ingredientQuantity": {
+      "required": "Please specify ingredient quantity",
+      "min": "The quantity of a recipe ingredient must be greater than 1"
+    }
+  },
+  "product": {
+    "title": {
+      "required": "Please fill in a product title"
+    },
+    "description": {
+      "required": "Please add a product description",
+      "minlength": "Product description must be more than 40 characters long"
+    },
+    "price": {
+      "required": "Please add a product description",
+      "min": "Price should be $0.00 or higher."
+    },
+    "category": {
+      "required": "Please choose a product category"
+    },
+    "imageUrl": {
+      "required": "Please add an image url",
+      "url": "Please fill in a valid url"
+    }
+  },
+  "ingredient": {
+    "name": {
+      "required": "Please fill in an ingredient name"
+    },
+    "category": {
+      "required": "Please choose an ingredient category"
+    },
+    "productUid": {
+      "required": "Please choose a related product"
+    }
+  }
+}

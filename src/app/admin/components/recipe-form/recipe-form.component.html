@@ -4,16 +4,13 @@
       <div class="form-group">
         <label for="title">Title</label>
         <input formControlName="title" id="title" type="text" class="form-control">
-        <!-- <div class="alert alert-danger" *ngIf="title.touched && title.invalid">Title is required</div> -->
+        <form-error [dataType]="'recipe'" [fControl]="dataForm.get('title')" [fControlName]="'title'"></form-error>
       </div>
       <div class="form-group">
         <label for="imageUrl">Image URL</label>
         <input formControlName="imageUrl" id="imageUrl" type="text" class="form-control">
       </div>
-      <!-- <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-        <div *ngIf="imageUrl.errors.required">Adding an image url is required</div>
-        <div *ngIf="imageUrl.errors.url && !imageUrl.errors.required">Please add a valid image url.</div>
-      </div> -->
+      <form-error [dataType]="'recipe'" [fControl]="dataForm.get('imageUrl')" [fControlName]="'imageUrl'"></form-error>
       <div class="form-group">
         <label for="category">Category</label>
         <select formControlName="category" id="category" class="form-control">
@@ -22,27 +19,18 @@
             {{ category.name }}
           </option>
         </select>
-        <!-- <div class="alert alert-danger" *ngIf="cat.touched && cat.invalid">
-          Selecting a category is required
-        </div> -->
+        <form-error [dataType]="'recipe'" [fControl]="dataForm.get('category')" [fControlName]="'category'"></form-error>
       </div>
       <div class="form-group">
         <label for="description">Description</label>
         <textarea formControlName="description" id="description" class="form-control" ></textarea>
-        <!-- <div class="alert alert-danger" *ngIf="descriptionField.touched && descriptionField.invalid">
-          <div *ngIf="descriptionField.errors.required">Description is required</div>
-          <div *ngIf="descriptionField.errors.minlength">Description should be more than 40 characters.</div>
-          <div *ngIf="descriptionField.errors.maxlength">Description should be less than 160 characters.</div>
-        </div> -->
+        <form-error [dataType]="'recipe'" [fControl]="dataForm.get('description')" [fControlName]="'description'"></form-error>
       </div>
       <div class="form-group">
         <label for="directions">Directions</label>
         <textarea formControlName="directions" id="directions" class="form-control"></textarea>
-        <!-- <div class="alert alert-danger" *ngIf="directionsField.touched && directionsField.invalid">
-          <div *ngIf="directionsField.errors.required">Directions are required</div>
-          <div *ngIf="directionsField.errors.minlength">Directions should be more than 40 characters.</div>
-          <div *ngIf="directionsField.errors.maxlength">directions should be less than 160 characters.</div>
-        </div> -->
+        <form-error [dataType]="'recipe'" [fControl]="dataForm.get('directions')" [fControlName]="'directions'">
+      </form-error>
       </div>
       <div formArrayName="ingredients">
         <h4>Ingredients</h4>
@@ -55,25 +43,36 @@
             <input formControlName="category" hidden>
             <input formControlName="key" hidden>
 
-            <select class="form-control" (change)="onIngredientSelected($event.target.value, i)">
-              <option value="">Select ingredient</option>
+            <select #ingredientSelect class="form-control" (change)="onIngredientSelected($event.target.value, i)">
+              <option value="" disabled>Select ingredient</option>
               <option
                 *ngFor="let ing of ingredients; let k = index"
                 [value]="k"
-                [selected]="data.ingredients.length > 0 && data.ingredients[i].name === ing.name"
+                [selected]="data.ingredients[i] && data.ingredients[i].name === ing.name"
               >{{ ing.name }}</option>
             </select>
-
+            
             <input
               formControlName="quantity"
               type="number"
               class="form-control"
               placeholder="Write ingredient quantity">
+            <form-error 
+              [dataType]="'recipe'"
+              [fControl]="ingredientFormArray.controls[i].get('quantity')"
+              [fControlName]="'ingredientQuantity'">
+            </form-error>      
           </div>
+          <button type="button" (click)="onDeleteIngredient(i)">X</button>
         </div>
+        <form-error 
+          [dataType]="'recipe'"
+          [fControl]="dataForm.get('ingredients')"
+          [fControlName]="'ingredients'">
+        </form-error>
         <button class="btn btn-default" type="button" (click)="onAddIngredient()">Add Ingredient</button>
       </div>      
-      <button class="btn btn-primary" type="submit" >Save</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid" >Save</button>
       <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
     </form>    
   </div>

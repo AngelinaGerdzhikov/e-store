@@ -44,7 +44,6 @@ export abstract class AdminFormComponent<T> implements CanComponentDeactivate {
 
   save() {
     if (this.id) {
-      console.log('From save: ', this.dataForm.value);
       this.service.update(this.id, this.dataForm.value)
         .then(() => this.onSavedChanges())
         .catch(err => console.log(err));

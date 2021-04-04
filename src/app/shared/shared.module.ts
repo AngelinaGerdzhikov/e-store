@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SortableHeaderDirective } from 'shared/directives/sortable-header/sortable-header.directive';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
@@ -12,13 +11,15 @@ import { AuthService } from './services/auth/auth.service';
 import { CategoryService } from './services/category/category.service';
 import { OrderService } from './services/order/order.service';
 import { ProductService } from './services/product/product.service';
-import { RecipesService } from './services/recipes/recipes.service';
 import { ShippingService } from './services/shipping/shipping.service';
 import { ShoppingCartService } from './services/shopping-cart/shopping-cart.service';
 import { UserService } from './services/user/user.service';
 import { MinValidatorDirective } from './validators/min.validator';
 import { UrlValidatorDirective } from './validators/url.validator';
+import { FormErrorComponent } from './components/form-error/form-error.component';
+import { SortableHeaderDirective } from './directives/sortable-header/sortable-header.directive';
 import { DropdownDirective } from './directives/dropdown/dropdown.directive';
+import { RecipesService } from './services/recipes/recipes.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DropdownDirective } from './directives/dropdown/dropdown.directive';
     MinValidatorDirective,
     UrlValidatorDirective,
     SortableHeaderDirective,
-    DropdownDirective
+    DropdownDirective,
+    FormErrorComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { DropdownDirective } from './directives/dropdown/dropdown.directive';
     MinValidatorDirective,
     UrlValidatorDirective,
     SortableHeaderDirective,
-    DropdownDirective
+    DropdownDirective,
+    FormErrorComponent
   ],
   providers: [
     AuthService,

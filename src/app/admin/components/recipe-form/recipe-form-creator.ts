@@ -17,7 +17,7 @@ export class RecipeFormCreator {
       'directions': new FormControl( null, 
         [ Validators.required, Validators.minLength(40) ]
       ),
-      'ingredients': new FormArray([])
+      'ingredients': new FormArray([], Validators.required)
     });
   }
 

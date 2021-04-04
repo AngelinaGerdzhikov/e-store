@@ -4,9 +4,10 @@
       <div class="form-group">
         <label for="name">Name</label>
         <input formControlName="name" id="name" type="text" class="form-control">
-        <!-- <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-          Name is required
-        </div> -->
+        <form-error
+          [dataType]="'ingredient'"
+          [fControl]="dataForm.get('name')"
+          [fControlName]="'name'"></form-error>
       </div>
       <div class="form-group">
         <label for="category">Category</label>
@@ -15,14 +16,15 @@
           id="category"
           (change)="filterProductsByCategory()"
           class="form-control">
-            <option value=""></option>
+            <option value="" disabled>Select ingredient category</option>
             <option
               *ngFor="let category of categories$ | async"
               value="{{ category.name }}">{{ category.name }}</option>
         </select>
-        <!-- <div class="alert alert-danger" *ngIf="cat.touched && cat.invalid">
-          Selecting a category is required
-        </div> -->
+        <form-error
+          [dataType]="'ingredient'"
+          [fControl]="dataForm.get('category')"
+          [fControlName]="'category'"></form-error>
       </div>
       <div class="form-group">
         <label for="productUid">Related product</label>
@@ -30,16 +32,22 @@
           <option value="">Select related product</option>
           <option
             *ngFor="let product of filteredProducts"
-            value="{{ product.key }}"
-          >{{ product.title }}</option>
+            value="{{ product.key }}">{{ product.title }}</option>
         </select>
-        <!-- <div class="alert alert-danger" *ngIf="productField.touched && productField.invalid">
-          Selecting a related product is required
-        </div> -->
+        <form-error
+          [dataType]="'ingredient'"
+          [fControl]="dataForm.get('productUid')"
+          [fControlName]="'productUid'"></form-error>
       </div>
-      
-      <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid">Save</button>
-      <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
+      <button 
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!dataForm.valid">Save</button>
+      <button
+        class="btn btn-danger"
+        type="button"
+        *ngIf="id" 
+        (click)="delete()">Delete</button>
     </form>    
   </div>
   <div class="col-md-6">

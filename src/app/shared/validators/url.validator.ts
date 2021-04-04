@@ -14,10 +14,7 @@ export class UrlValidatorDirective implements Validator {
     let isValid = new RegExp(reg).test(control.value);
 
     return isValid ? null : {
-      url: {
-        invalid: true,
-        actual: control.value
-      }
+      url: true
     };
   }
   
