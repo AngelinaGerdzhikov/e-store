@@ -10,9 +10,6 @@ import { AdminProductsComponent } from './components/admin-products/admin-produc
 import { AdminRecipesComponent } from './components/admin-recipes/admin-recipes.component';
 import { IngredientFormComponent } from './components/ingredient-form/ingredient-form.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
-import {
-  AddRecipeIngredientComponent,
-} from './components/recipe-form/add-recipe-ingredient/add-recipe-ingredient.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { AdminGuard } from './services/admin-guard/admin-guard.service';
 
@@ -26,7 +23,6 @@ import { AdminGuard } from './services/admin-guard/admin-guard.service';
     RecipeFormComponent,
     AdminIngredientsComponent,
     IngredientFormComponent,
-    AddRecipeIngredientComponent,
   ],
   imports: [
     SharedModule,

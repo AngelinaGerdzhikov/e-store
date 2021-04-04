@@ -1,0 +1,13 @@
+<div *ngIf="ingredient.name" class="card">
+  <ng-container *ngIf="$product | async as product">
+    <img *ngIf="product?.imageUrl" [src]="product?.imageUrl" class="card-img-top" [alt]="product?.title">
+    <div class="card-body">
+      <h5 class="card-title">{{ ingredient.name }}</h5>
+      <div class="card-text">
+        <h6>{{ ingredient.category }}</h6>
+        <h6> Related Product Description</h6>
+        <p>{{ product?.description }}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -28,11 +28,12 @@
       </div>
       <div class="form-group">
         <label for="productUid">Related product</label>
-        <select formControlName="productUid" id="productUid"        class="form-control">
+        <select formControlName="productUid" id="productUid" class="form-control">
           <option value="">Select related product</option>
           <option
             *ngFor="let product of filteredProducts"
-            value="{{ product.key }}">{{ product.title }}</option>
+            value="{{ product.key }}"
+            >{{ product.title }}</option>
         </select>
         <form-error
           [dataType]="'ingredient'"
@@ -51,8 +52,11 @@
     </form>    
   </div>
   <div class="col-md-6">
-    <!-- <aside>
-      <product-card [product]="product" [showActions]="false"></product-card>
-    </aside> -->
+    <aside>
+      <ingredient-card
+        *ngIf="dataForm.get('productUid') && data.productUid"
+       [ingredient]="dataForm.value"
+       [productUidFormControl]="dataForm.get('productUid')"></ingredient-card>
+    </aside>
   </div>
 </div>

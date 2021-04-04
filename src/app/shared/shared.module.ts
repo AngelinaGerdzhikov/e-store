@@ -20,6 +20,8 @@ import { FormErrorComponent } from './components/form-error/form-error.component
 import { SortableHeaderDirective } from './directives/sortable-header/sortable-header.directive';
 import { DropdownDirective } from './directives/dropdown/dropdown.directive';
 import { RecipesService } from './services/recipes/recipes.service';
+import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
+import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { RecipesService } from './services/recipes/recipes.service';
     UrlValidatorDirective,
     SortableHeaderDirective,
     DropdownDirective,
-    FormErrorComponent
+    FormErrorComponent,
+    RecipeCardComponent,
+    IngredientCardComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +52,9 @@ import { RecipesService } from './services/recipes/recipes.service';
     UrlValidatorDirective,
     SortableHeaderDirective,
     DropdownDirective,
-    FormErrorComponent
+    FormErrorComponent,
+    RecipeCardComponent,
+    IngredientCardComponent
   ],
   providers: [
     AuthService,

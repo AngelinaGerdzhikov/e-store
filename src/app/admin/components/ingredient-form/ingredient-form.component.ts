@@ -21,6 +21,7 @@ export class IngredientFormComponent extends AdminFormComponent<Ingredient> impl
   products: Product[];
   filteredProducts: Product[] = [];
   productsSubscription: Subscription;
+  selectedProduct: Product;
 
   constructor(
     private categoryService: CategoryService,
@@ -47,6 +48,10 @@ export class IngredientFormComponent extends AdminFormComponent<Ingredient> impl
   filterProductsByCategory() {
     let category = this.dataForm.get('category').value;
     this.filteredProducts = this.products.filter(p => p.category.toLowerCase() == category.toLowerCase());
+  }
+
+  onSelectedProduct(product: Product) {
+    this.selectedProduct = product;
   }
 
   ngOnDestroy() {
