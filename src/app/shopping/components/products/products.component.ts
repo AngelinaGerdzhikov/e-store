@@ -15,6 +15,8 @@ import { ShoppingCart } from 'shared/models/shopping-cart';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   private productSubscription: Subscription;
+
+  isLoading: boolean = false;
   products: Product[] = [];
   category: string;
 
@@ -27,6 +29,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   ) { }
   
   async ngOnInit() {
+    this.isLoading = true;
     this.shoppingCart$ = await this.shoppingCartService.getCart();
     this.populateProducts();    
   }
@@ -39,6 +42,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       })
     ).subscribe(params => {
       this.category = params.get('category');
+      this.isLoading = false;
     });  
   }
 

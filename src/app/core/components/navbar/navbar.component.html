@@ -11,8 +11,7 @@
         class="nav-link"
         [routerLink]="['/']"
         fragment="about"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
+        [class.active]="isSectionActive('about')"
       >
         About Us
       </a>
