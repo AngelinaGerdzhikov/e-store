@@ -20,7 +20,6 @@ import { ShoppingModule } from './shopping/shopping.module';
     AngularFireModule.initializeApp(environment.firebase),
     SharedModule,
     ShoppingModule,
-    AdminModule,
     AppRoutingModule,
     MembershipModule,
     CoreModule
