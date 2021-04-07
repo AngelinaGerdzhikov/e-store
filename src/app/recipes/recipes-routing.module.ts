@@ -5,12 +5,12 @@ import { RecipeDetailsComponent } from './components/recipe-details/recipe-detai
 
 const routes: Routes = [
   {
-    path: 'recipes/:id',
-    component: RecipeDetailsComponent
+    path: '',
+    component: RecipeBookComponent
   },
   {
-    path: 'recipes',
-    component: RecipeBookComponent
+    path: ':id',
+    component: RecipeDetailsComponent
   }
 ];
 

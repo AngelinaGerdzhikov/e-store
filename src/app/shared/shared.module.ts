@@ -64,17 +64,6 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     ShortenPipe,
     FilterPipe,
     LoadingSpinnerComponent
-  ],
-  providers: [
-    AuthService,
-    AuthGuard,
-    UserService,
-    CategoryService,
-    ProductService,
-    ShoppingCartService,
-    ShippingService,
-    OrderService,
-    RecipesService
   ]
 })
 export class SharedModule { }

@@ -14,7 +14,7 @@ import { AdminGuard } from './services/admin-guard/admin-guard.service';
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     canActivate: [AuthGuard, AdminGuard],
     children: [
       {
