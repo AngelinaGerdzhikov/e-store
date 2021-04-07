@@ -12,7 +12,7 @@ export class UserService {
 
   save(user: firebase.User) {
     this.db.object(`/users/${user.uid}`).update({
-      displayName: user.displayName,
+      displayName: user.displayName || user.email,
       email: user.email
     })
   }

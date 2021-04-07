@@ -24,6 +24,7 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
 import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     RecipeCardComponent,
     IngredientCardComponent,
     ShortenPipe,
-    FilterPipe
+    FilterPipe,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +62,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     RecipeCardComponent,
     IngredientCardComponent,
     ShortenPipe,
-    FilterPipe
+    FilterPipe,
+    LoadingSpinnerComponent
   ],
   providers: [
     AuthService,

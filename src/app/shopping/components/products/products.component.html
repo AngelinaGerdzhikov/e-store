@@ -5,7 +5,7 @@
     </aside>
   </div>
   <article class="col-9">
-    <div *ngIf="isLoading">Loading...</div>
+    <loading-spinner *ngIf="isLoading"></loading-spinner>
     <div *ngIf="!isLoading">
       <div
         class="row row-cols-3 row-cols-md-3 g-4"
