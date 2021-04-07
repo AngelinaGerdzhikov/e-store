@@ -73,5 +73,15 @@
     "addressLine": {
       "required": "Please fill in an address line"
     }
+  },
+  "login": {
+    "email": {
+      "required": "Please enter an user email",
+      "email": "Please enter a valid email address"
+    },
+    "password": {
+      "required": "Please enter user password",
+      "minlength": "Password must be longer than 6 characters"
+    }
   }
 }
