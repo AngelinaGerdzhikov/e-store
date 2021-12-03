@@ -1,15 +1,16 @@
-<div class="row no-gutters">
+
+<div class="row no-gutters product-quantity">
   <div class="col-2">
     <button
       (click)="removeFromCart()"
-      class="btn btn-secondary btn-block">-</button>
+      class="btn btn-default btn-block">-</button>
   </div>
-  <div class="col text-center">
+  <div class="col text-center" @fadeIn>
     <div>{{ shoppingCart.getItemQuantity(product.key) }} in cart</div>
   </div>
   <div class="col-2">
     <button
       (click)="addToCart()"
-      class="btn btn-secondary btn-block">+</button>
+      class="btn btn-default btn-block">+</button>
   </div>
 </div>

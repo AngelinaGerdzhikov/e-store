@@ -1,16 +1,57 @@
+@import "../../../../styles/colors.scss";
+
 .card {
   margin-bottom: 30px;
-  
+  text-align: center;
+
+  .image-holder {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
   img {
     object-fit: cover;
     height: 200px;
+    transition: all ease-in-out 1s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &-body {
+    padding-bottom: 0;
   }
 
   &-footer {
-    padding: 0;
+    border: none;
+    background: white;
+    text-align: right;
+  }
+}
 
-    button {
-      cursor: pointer;
-    }
+.product {
+  box-shadow: $box-shadow;
+  border: none;
+
+  &-title {
+    margin-bottom: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &-category {
+    font-size: 0.8em;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &-price {
+    color: $secondary-contrast-color;
+    font-weight: 700;
   }
 }

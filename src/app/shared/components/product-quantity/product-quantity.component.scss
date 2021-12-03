@@ -1,0 +1,14 @@
+@import "../../../../styles/colors.scss";
+
+.product-quantity {
+  background: #fff;
+
+  &__items {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  button {
+    display: inline-block;
+  }
+}
