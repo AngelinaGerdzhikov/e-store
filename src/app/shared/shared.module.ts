@@ -3,28 +3,19 @@ import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { FormErrorComponent } from './components/form-error/form-error.component';
+import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
-import { AuthGuard } from './services/auth-guard/auth-guard.service';
-import { AuthService } from './services/auth/auth.service';
-import { CategoryService } from './services/category/category.service';
-import { OrderService } from './services/order/order.service';
-import { ProductService } from './services/product/product.service';
-import { ShippingService } from './services/shipping/shipping.service';
-import { ShoppingCartService } from './services/shopping-cart/shopping-cart.service';
-import { UserService } from './services/user/user.service';
+import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
+import { DropdownDirective } from './directives/dropdown/dropdown.directive';
+import { SortableHeaderDirective } from './directives/sortable-header/sortable-header.directive';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ShortenPipe } from './pipes/shorten.pipe';
 import { MinValidatorDirective } from './validators/min.validator';
 import { UrlValidatorDirective } from './validators/url.validator';
-import { FormErrorComponent } from './components/form-error/form-error.component';
-import { SortableHeaderDirective } from './directives/sortable-header/sortable-header.directive';
-import { DropdownDirective } from './directives/dropdown/dropdown.directive';
-import { RecipesService } from './services/recipes/recipes.service';
-import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
-import { IngredientCardComponent } from './components/ingredient-card/ingredient-card.component';
-import { ShortenPipe } from './pipes/shorten.pipe';
-import { FilterPipe } from './pipes/filter.pipe';
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+
 
 @NgModule({
   declarations: [
