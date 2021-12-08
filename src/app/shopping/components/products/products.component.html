@@ -1,16 +1,16 @@
 <main class="products">
   <div class="row">
-    <div class="col-3">
+    <div class="col-12 order-2 col-sm-12 order-sm-2 col-md-3 order-md-1 col-lg-3 order-lg-1 ">
       <aside class="sticky-top">
         <product-filter [category]="category"></product-filter>
       </aside>
     </div>
-    <article class="col-9">
+    <article class="col-12 order-1 col-sm-12 order-sm-1 col-md-9 order-md-2 col-lg-9 order-lg-2 ">
       <loading-spinner *ngIf="isLoading"></loading-spinner>
       <div *ngIf="!isLoading">
         <div
           @productListAnimation
-          class="row row-cols-3 row-cols-md-3 g-4"
+          class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4"
           *ngIf="shoppingCart$ | async as shoppingCart">
           <ng-container *ngFor="let product of products | filter: category: 'category'; index as i">
             <div @fadeIn class="col product-card">
@@ -22,9 +22,6 @@
           </ng-container>
         </div>
       </div>
-    </article>
-    <article id="about">
-      <h2>About Us</h2>
     </article>
   </div>
 </main>
