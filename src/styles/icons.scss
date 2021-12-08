@@ -1,0 +1,20 @@
+.icon {
+  &::before {
+    display: inline-block;
+    content: "";
+    vertical-align: -0.125em;
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  &-shopping-cart::before {
+    background-image: url('../assets/icons/shopping-cart.svg');
+  }
+
+  &-user::before {
+    background-image: url('../assets/icons/person.svg');
+  }
+}
+

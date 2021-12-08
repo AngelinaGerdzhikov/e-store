@@ -1,16 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
-@import './styles/fonts.scss';
-@import './styles/colors.scss';
+@import "./styles/fonts.scss";
+@import "./styles/colors.scss";
+@import "./styles/icons.scss";
 
 body {
   font-family: $text_font;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: $title_font_weight;
 }
 
@@ -22,35 +28,77 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   cursor: pointer;
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     border: none;
-    outline: 0!important;
-    box-shadow: none!important;
+    outline: 0 !important;
+    box-shadow: none !important;
   }
 
   &-default {
     background: $default-grey;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       background: $primary-contrast-color;
       color: #fff;
     }
   }
-  
+
   &-primary {
     background: $primary-contrast-color;
 
-    &:not(.disabled):hover, &:not(.disabled):active, &:not(.disabled):focus  {
-      background: $secondary-contrast-color!important;
+    &:not(.disabled):hover,
+    &:not(.disabled):active,
+    &:not(.disabled):focus {
+      background: $secondary-contrast-color !important;
     }
   }
-  
+
   &-secondary {
     background: $secondary-contrast-color;
 
-    &:not(.disabled):hover, &:not(.disabled):active, &:not(.disabled):focus {
-      background: $primary-contrast-color!important;
+    &:not(.disabled):hover,
+    &:not(.disabled):active,
+    &:not(.disabled):focus {
+      background: $primary-contrast-color !important;
     }
   }
+}
 
+.list-group {
+  box-shadow: $box-shadow;
+
+  &-item {
+    border: none;
+    border-bottom: 1px dashed #e6e4e2;
+    font-weight: 500;
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+    transition: all ease-in-out 0.2s;
+  
+    a {
+      display: block;
+    }
+  
+    &.active {
+      background-color: $primary-contrast-color;
+      border-bottom-color: $primary-contrast-color;
+  
+      & * {
+        color: white !important;
+      }
+    }
+  
+    &.active:hover,
+    &:hover {
+      background-color: $secondary-contrast-color;
+      border-bottom-color: $secondary-contrast-color;
+      cursor: pointer;
+  
+      & * {
+        color: white !important;
+      }
+    }
+  }
 }

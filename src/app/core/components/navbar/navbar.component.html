@@ -1,8 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">U</a>
-  <!-- <ul class="navbar-nav mr-auto">
-    
-  </ul> -->
+  <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">HealthyLicious</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -37,7 +34,7 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/shopping-cart']" routerLinkActive="active">
           <!-- <fa-icon [icon]="faCoffee"></fa-icon> -->
-          <i class="bi bi-star-fill"></i>
+          <i class="icon icon-shopping-cart"></i>
           Shopping Cart
           <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
             {{ cart.totalItemsCount }}
@@ -58,6 +55,7 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
+           <i class="icon icon-user"></i>
            {{ user.displayName }}
           </a>
         <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="navbarDropdown">
@@ -75,7 +73,10 @@
       </li>
       <ng-template #anonymousUser>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
+          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">
+           <i class="icon icon-user"></i>
+            Login
+          </a>
         </li>
       </ng-template>
     </ul>
