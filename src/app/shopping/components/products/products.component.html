@@ -1,28 +1,32 @@
-<main class="products container-fluid">
-  <header-section></header-section>
-  <div class="row">
-    <div class="col-12 order-2 col-sm-12 order-sm-2 col-md-3 order-md-1 col-lg-3 order-lg-1 ">
-      <aside class="sticky-top">
-        <product-filter [category]="category"></product-filter>
-      </aside>
-    </div>
-    <article class="col-12 order-1 col-sm-12 order-sm-1 col-md-9 order-md-2 col-lg-9 order-lg-2 ">
-      <loading-spinner *ngIf="isLoading"></loading-spinner>
-      <div *ngIf="!isLoading">
-        <div
-          @productListAnimation
-          class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4"
-          *ngIf="shoppingCart$ | async as shoppingCart">
-          <ng-container *ngFor="let product of products | filter: category: 'category'; index as i">
-            <div @fadeIn class="col product-card">
-                 <product-card
-                   [product]="product"
-                   [showActions]="true"
-                   [shoppingCart]="shoppingCart"></product-card>
-            </div>
-          </ng-container>
-        </div>
+<main class="products">
+  <div class="container-fluid">
+    <header-section></header-section>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 order-2 col-sm-12 order-sm-2 col-md-3 order-md-1 col-lg-3 order-lg-1 ">
+        <aside class="sticky-top">
+          <product-filter [category]="category"></product-filter>
+        </aside>
       </div>
-    </article>
+      <article class="col-12 order-1 col-sm-12 order-sm-1 col-md-9 order-md-2 col-lg-9 order-lg-2">
+        <loading-spinner *ngIf="isLoading"></loading-spinner>
+        <div *ngIf="!isLoading">
+          <div
+            @productListAnimation
+            class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 g-4"
+            *ngIf="shoppingCart$ | async as shoppingCart">
+            <ng-container *ngFor="let product of products | filter: category: 'category'; index as i">
+              <div @fadeIn class="col product-card">
+                   <product-card
+                     [product]="product"
+                     [showActions]="true"
+                     [shoppingCart]="shoppingCart"></product-card>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
 </main>

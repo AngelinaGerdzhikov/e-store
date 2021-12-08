@@ -28,3 +28,9 @@
     margin-bottom: 1.5em;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .header-section {
+    background-attachment: scroll;
+  }
+}
