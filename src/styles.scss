@@ -64,6 +64,11 @@ h6 {
       background: $primary-contrast-color !important;
     }
   }
+
+  &-cta {
+    padding: 0.5em 2em;
+    font-weight: 500;
+  }
 }
 
 .list-group {

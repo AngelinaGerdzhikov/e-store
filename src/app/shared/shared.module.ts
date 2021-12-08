@@ -15,6 +15,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { MinValidatorDirective } from './validators/min.validator';
 import { UrlValidatorDirective } from './validators/url.validator';
+import { HeaderSectionComponent } from './components/header-section/header-section.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { UrlValidatorDirective } from './validators/url.validator';
     IngredientCardComponent,
     ShortenPipe,
     FilterPipe,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    HeaderSectionComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +56,8 @@ import { UrlValidatorDirective } from './validators/url.validator';
     IngredientCardComponent,
     ShortenPipe,
     FilterPipe,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    HeaderSectionComponent
   ]
 })
 export class SharedModule { }

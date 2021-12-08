@@ -1,4 +1,5 @@
 @import '../../../../styles/colors.scss';
+@import '../../../../styles/fonts.scss';
 
 .navbar.bg-light {
   background: #fff;
@@ -9,6 +10,8 @@
   .navbar-brand {
     color: $primary-contrast-color!important;
     font-weight: 900;
+    font-family: $cursive_title_font;
+    font-size: 1.8em;
   }
 }
 
