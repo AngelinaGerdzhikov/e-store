@@ -1,3 +1,23 @@
+@import '../../../../styles/colors.scss';
+
+.navbar.bg-light {
+  background: #fff;
+  box-shadow: $box-shadow;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+.nav {
+  &-item a{
+    font-weight: 700;
+    color: $primary-color!important;
+    padding-right: 1.5em;
+
+    &:hover {
+      color: $primary-contrast-color!important;
+    }
+  }
+}
 .sticky-top {
   z-index: 1021;
 }
