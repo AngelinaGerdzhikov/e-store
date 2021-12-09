@@ -6,6 +6,7 @@
 @import "./styles/fonts.scss";
 @import "./styles/colors.scss";
 @import "./styles/icons.scss";
+@import "./styles/table.scss";
 
 body {
   font-family: $text_font;
@@ -80,6 +81,23 @@ a {
   }
 }
 
+.dropdown {
+  &-menu {
+    border: none;
+  }
+
+  &-divider {
+    border-top: 1px dashed $default-grey;
+  }
+
+  &-item {
+    &.active {
+      background-color: transparent;
+      color: $primary-contrast-color!important;
+    }
+  }
+}
+
 .list-group {
   box-shadow: $box-shadow;
 
@@ -137,6 +155,21 @@ a {
   }
 }
 
+.page {
+  &-item {
+    &.active {
+      .page-link {
+        background: $primary-contrast-color;
+        border-color: $primary-contrast-color;
+        box-shadow: $form-control-box-shadow;
+      }
+    }
+
+    .page-link {
+      color: $primary-color;
+    }
+  }
+}
 
 .wrapper {
   padding: 1.5em;
@@ -144,10 +177,3 @@ a {
   box-shadow: $box-shadow;
 }
 
-@media only screen and (max-width: 800px) {
-  .table td {
-    font-size: 0.6em!important;
-    padding: 0.5em 0.4em;
-    vertical-align: middle;
-  }
-}

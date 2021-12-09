@@ -21,8 +21,10 @@
     color: $primary-color!important;
     padding-right: 1.5em;
 
-    &:hover {
+    &:hover, 
+    &.active {
       color: $primary-contrast-color!important;
+      background: transparent;
     }
   }
 }
