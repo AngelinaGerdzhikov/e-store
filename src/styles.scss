@@ -21,6 +21,14 @@ h6 {
   font-weight: $title_font_weight;
 }
 
+a {
+  color: $primary-contrast-color;
+
+  &:hover {
+    color: $primary-contrast-color
+  }
+}
+
 .container {
   padding-top: 25px;
 }
@@ -47,7 +55,7 @@ h6 {
   }
 
   &-primary {
-    background: $primary-contrast-color;
+    background: $primary-contrast-color!important;
 
     &:not(.disabled):hover,
     &:not(.disabled):active,
@@ -100,11 +108,46 @@ h6 {
     &:hover {
       background-color: $secondary-contrast-color;
       border-bottom-color: $secondary-contrast-color;
-      cursor: pointer;
   
       & * {
         color: white !important;
       }
     }
+  }
+}
+
+.form-control {
+  border: 1px dashed $default-grey;
+
+  &:focus {
+    border-color: $primary-contrast-color;
+    box-shadow: $form-control-box-shadow;
+  };
+}
+
+.alert {
+  border-style:dashed;
+  border: none;
+  padding-bottom:0;
+  font-weight: 500;
+  
+  &-danger {
+    background: transparent;
+    color: $alert-color;
+  }
+}
+
+
+.wrapper {
+  padding: 1.5em;
+  background: #fff;
+  box-shadow: $box-shadow;
+}
+
+@media only screen and (max-width: 800px) {
+  .table td {
+    font-size: 0.6em!important;
+    padding: 0.5em 0.4em;
+    vertical-align: middle;
   }
 }

@@ -1,0 +1,18 @@
+@import '../../../../styles/fonts.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+
+  h1 {
+    font-family: $cursive_title_font;
+  }
+
+  h2 {
+    font-size: 1em;
+    margin-bottom: 2em;
+  }
+}

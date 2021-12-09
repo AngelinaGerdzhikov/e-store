@@ -5,7 +5,7 @@
       (click)="removeFromCart()"
       class="btn btn-default btn-block">-</button>
   </div>
-  <div class="col text-center" @fadeIn>
+  <div class="col text-center quantity" @fadeIn >
     <div>{{ shoppingCart.getItemQuantity(product.key) }} in cart</div>
   </div>
   <div class="col-2">

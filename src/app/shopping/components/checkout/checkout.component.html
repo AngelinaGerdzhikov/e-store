@@ -1,14 +1,20 @@
-<div class="row" *ngIf="shoppingCart$ | async as shoppingCart">
-  <div class="col-6">
-    <h2>Shipping</h2>
-    <shipping-form #shippingForm [shoppingCart]="shoppingCart"></shipping-form>
-    <button
-      [disabled]="!shippingForm.form.valid"
-      class="btn btn-primary"
-      (click)="placeOrder(shippingForm.shippingAddress, shoppingCart.items)">Place Order</button>
-  </div>
-  <div class="col-6">
-    <h2>Order Summary</h2>
-    <shopping-cart-summary [shoppingCart]="shoppingCart"></shopping-cart-summary>
+<div class="container">
+  <div class="row" *ngIf="shoppingCart$ | async as shoppingCart">
+    <div class="col-6">
+      <div class="wrapper">
+        <h2>Shipping</h2>
+        <shipping-form #shippingForm [shoppingCart]="shoppingCart"></shipping-form>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="wrapper">
+        <h2>Order Summary</h2>
+        <shopping-cart-summary [shoppingCart]="shoppingCart"></shopping-cart-summary>
+        <button
+          [disabled]="!shippingForm.form.valid"
+          class="btn btn-primary btn-block"
+          (click)="placeOrder(shippingForm.shippingAddress, shoppingCart.items)">Place Order</button>
+      </div>
+    </div>
   </div>
 </div>

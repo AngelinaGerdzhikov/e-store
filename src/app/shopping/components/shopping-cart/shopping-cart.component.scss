@@ -16,3 +16,14 @@
 .total-col {
   width: 150px;
 }
+
+@media only screen and (max-width: 800px) {
+  .thumbnail {
+    width: 30px;
+    height: 30px;
+  }
+
+  .image-col {
+    width: 30px;
+  }
+}
