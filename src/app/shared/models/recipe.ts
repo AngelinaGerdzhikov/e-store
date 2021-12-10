@@ -10,6 +10,7 @@ export class Recipe {
   public ingredients?: Ingredient[];
   public authorDisplayName?: string;
   public authorUid?: string;
+  public key?: string;
   
   constructor(
     init?: Partial<Recipe>,

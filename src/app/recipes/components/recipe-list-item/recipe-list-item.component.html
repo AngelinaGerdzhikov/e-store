@@ -7,7 +7,7 @@
       {{ recipe.description | shorten: 140 }}
     </p>
     <footer class="text-right">
-      <a [routerLink]="['/recipes/', recipe.key]" class="btn btn-primary">View Recipe</a>
+      <a [routerLink]="['/recipes/', recipe?.key]" class="btn btn-primary">View Recipe</a>
     </footer>
   </div>
 </div>
