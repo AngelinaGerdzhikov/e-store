@@ -1,13 +1,17 @@
-<div class="row">
+<article class="wrapper recipe" *ngIf="recipe$ | async as recipe">
   <img [src]="recipe?.imageUrl" [alt]="recipe?.title" width="200px">
-  <h1>{{ recipe?.title }}</h1>
+  <h2 class="recipe-title">{{ recipe?.title }}</h2>
+  <p class="recipe-author">{{ recipe?.authorDisplayName }}</p>
+  <h6 class="recipe-section-title">Description</h6>
   <p>{{ recipe?.description }}</p>
   <hr>
-  <p>{{ recipe?.authorDisplayName }}</p>
-  <ul class="list-group">
-    <li *ngFor="let ingredient of recipe?.ingredients" class="list-group-item">
+  <h6 class="recipe-section-title">Ingredients</h6>
+  <ul class="ingredients">
+    <li *ngFor="let ingredient of recipe?.ingredients" class="">
       <p>{{ ingredient.name }} x {{ ingredient.quantity }}</p> 
-      <button class="btn btn-primary" (click)="addIngredientToShoppingCart(ingredient)">Add to cart</button>
+      <button class="btn btn-default" (click)="addIngredientToShoppingCart(ingredient)">Add to cart</button>
     </li>
   </ul>
-</div>
+  <h6 class="recipe-section-title">Directions</h6>
+  <p>{{ recipe?.directions }}</p>
+</article>

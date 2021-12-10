@@ -4,6 +4,8 @@ import { take } from 'rxjs/operators';
 import { Recipe } from 'shared/models/recipe';
 import { IngredientsService } from 'shared/services/ingredients.service';
 import { RecipesService } from 'shared/services/recipes/recipes.service';
+import { switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-details',
@@ -12,19 +14,23 @@ import { RecipesService } from 'shared/services/recipes/recipes.service';
 })
 export class RecipeDetailsComponent {
   id: string;
-  recipe: Recipe;
+  recipe$: Observable<Recipe>;
 
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipesService,
     private ingredientService: IngredientsService
   ) {
-    this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id) {
-      this.recipeService.get(this.id)
-        .pipe(take(1))
-        .subscribe(recipe => this.recipe = recipe);
-    }
+    this.recipe$ = this.route.params.pipe(
+      switchMap(params => {
+        if (params.id) {
+          this.id = params.id;
+          return this.recipeService.get(this.id)
+        }
+
+        return of(null);
+      })
+    );
   }
 
   addIngredientToShoppingCart(ingredient) {

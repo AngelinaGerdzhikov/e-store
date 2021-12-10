@@ -6,11 +6,13 @@ import { RecipeDetailsComponent } from './components/recipe-details/recipe-detai
 const routes: Routes = [
   {
     path: '',
-    component: RecipeBookComponent
-  },
-  {
-    path: ':id',
-    component: RecipeDetailsComponent
+    component: RecipeBookComponent,
+    children: [
+      {
+        path: ':id',
+        component: RecipeDetailsComponent
+      }
+    ]
   }
 ];
 

@@ -1,62 +1,67 @@
-<div class="row">
-  <div class="col-md-6">
-    <form [formGroup]="dataForm" (ngSubmit)="save()">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input formControlName="name" id="name" type="text" class="form-control">
-        <form-error
-          [dataType]="'ingredient'"
-          [fControl]="dataForm.get('name')"
-          [fControlName]="'name'"></form-error>
-      </div>
-      <div class="form-group">
-        <label for="category">Category</label>
-        <select
-          formControlName="category"
-          id="category"
-          (change)="filterProductsByCategory()"
-          class="form-control">
-            <option value="" disabled>Select ingredient category</option>
-            <option
-              *ngFor="let category of categories$ | async"
-              value="{{ category.name }}">{{ category.name }}</option>
-        </select>
-        <form-error
-          [dataType]="'ingredient'"
-          [fControl]="dataForm.get('category')"
-          [fControlName]="'category'"></form-error>
-      </div>
-      <div class="form-group">
-        <label for="productUid">Related product</label>
-        <select formControlName="productUid" id="productUid" class="form-control">
-          <option value="">Select related product</option>
-          <option
-            *ngFor="let product of filteredProducts"
-            value="{{ product.key }}"
-            >{{ product.title }}</option>
-        </select>
-        <form-error
-          [dataType]="'ingredient'"
-          [fControl]="dataForm.get('productUid')"
-          [fControlName]="'productUid'"></form-error>
-      </div>
-      <button 
-        class="btn btn-primary"
-        type="submit"
-        [disabled]="!dataForm.valid">Save</button>
-      <button
-        class="btn btn-danger"
-        type="button"
-        *ngIf="id" 
-        (click)="delete()">Delete</button>
-    </form>    
+<main class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+      <article class="wrapper">
+        <form [formGroup]="dataForm" (ngSubmit)="save()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input formControlName="name" id="name" type="text" class="form-control">
+            <form-error
+              [dataType]="'ingredient'"
+              [fControl]="dataForm.get('name')"
+              [fControlName]="'name'"></form-error>
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select
+              formControlName="category"
+              id="category"
+              (change)="filterProductsByCategory()"
+              class="form-control">
+                <option value="" disabled>Select ingredient category</option>
+                <option
+                  *ngFor="let category of categories$ | async"
+                  value="{{ category.name }}">{{ category.name }}</option>
+            </select>
+            <form-error
+              [dataType]="'ingredient'"
+              [fControl]="dataForm.get('category')"
+              [fControlName]="'category'"></form-error>
+          </div>
+          <div class="form-group">
+            <label for="productUid">Related product</label>
+            <select formControlName="productUid" id="productUid" class="form-control">
+              <option value="">Select related product</option>
+              <option
+                *ngFor="let product of filteredProducts"
+                value="{{ product.key }}"
+                >{{ product.title }}</option>
+            </select>
+            <form-error
+              [dataType]="'ingredient'"
+              [fControl]="dataForm.get('productUid')"
+              [fControlName]="'productUid'"></form-error>
+          </div>
+          <button 
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!dataForm.valid">Save</button>
+          <button
+            class="btn btn-danger"
+            type="button"
+            *ngIf="id" 
+            (click)="delete()">Delete</button>
+        </form>    
+      </article>
+    </div>
+    <div class="col-md-6">
+      <aside class="wrapper">
+        <ingredient-card
+          *ngIf="dataForm.get('productUid') && data.productUid"
+        [ingredient]="dataForm.value"
+        [productUidFormControl]="dataForm.get('productUid')"></ingredient-card>
+      </aside>
+    </div>
   </div>
-  <div class="col-md-6">
-    <aside>
-      <ingredient-card
-        *ngIf="dataForm.get('productUid') && data.productUid"
-       [ingredient]="dataForm.value"
-       [productUidFormControl]="dataForm.get('productUid')"></ingredient-card>
-    </aside>
-  </div>
-</div>
+</main>

@@ -1,7 +1,7 @@
-<ul class="list-group">
-  <li *ngFor="let recipe of recipes" class="list-group-item">
+<ul class="recipe-list">
+  <li *ngFor="let recipe of recipes" class="recipe-list__item">
+    <recipe-list-item [recipe]="recipe"></recipe-list-item>
     <a [routerLink]="['/recipes/', recipe.key]">
-      <recipe-list-item [recipe]="recipe"></recipe-list-item>
     </a>
   </li>
 </ul>

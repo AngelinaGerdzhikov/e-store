@@ -1,0 +1,13 @@
+.leading {
+  text-align: right;
+  margin-bottom: 1.5em;
+
+  input {
+    width: auto;
+    min-width: 200px;
+    margin-right: 1em;
+  }
+  .btn, input {
+    display: inline-block;
+  }
+}

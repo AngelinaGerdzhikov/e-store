@@ -1,7 +1,13 @@
-<div>
+
+<div class="recipe">
   <img [src]="recipe.imageUrl" class="img-responsive">
-</div>
-<div>
-  <h4 class="list-group-item-heading">{{ recipe.title }}</h4>
-  <p class="list-group-item-text">{{ recipe.description | shorten: 140 }}</p>
+  <div>
+    <h4 class="list-group-item-heading">{{ recipe.title }}</h4>
+    <p class="list-group-item-text">
+      {{ recipe.description | shorten: 140 }}
+    </p>
+    <footer class="text-right">
+      <a [routerLink]="['/recipes/', recipe.key]" class="btn btn-primary">View Recipe</a>
+    </footer>
+  </div>
 </div>
