@@ -1,47 +1,57 @@
-<div class="row">
-  <div class="col-md-6">
-    <form [formGroup]="dataForm" (ngSubmit)="save()">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input formControlName="title" id="title" type="text" class="form-control">
-        <form-error [dataType]="'product'" [fControl]="dataForm.get('title')" [fControlName]="'title'"></form-error>
+<main class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="wrapper">
+        <h2>Enter Product Information</h2>
+        <form [formGroup]="dataForm" (ngSubmit)="save()">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input formControlName="title" id="title" type="text" class="form-control">
+            <form-error [dataType]="'product'" [fControl]="dataForm.get('title')" [fControlName]="'title'"></form-error>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea formControlName="description" id="description" class="form-control"></textarea>
+            <form-error [dataType]="'product'" [fControl]="dataForm.get('description')" [fControlName]="'description'"></form-error>
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input formControlName="price" id="price" type="number" class="form-control">
+            </div>
+            <form-error [dataType]="'product'" [fControl]="dataForm.get('price')" [fControlName]="'price'"></form-error>
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select formControlName="category" id="category" class="form-control">
+              <option value="" disabled>Select product category</option>
+              <option
+                *ngFor="let category of categories$ | async"
+                value="{{ category.name }}"
+              >{{ category.name }}</option>
+            </select>
+            <form-error [dataType]="'product'" [fControl]="dataForm.get('category')" [fControlName]="'category'"></form-error>
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input formControlName="imageUrl" id="imageUrl" type="text" class="form-control">
+          </div>
+          <form-error [dataType]="'product'" [fControl]="dataForm.get('imageUrl')" [fControlName]="'imageUrl'"></form-error>
+          <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid">Save</button>
+          <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
+        </form>    
+
       </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea formControlName="description" id="description" class="form-control"></textarea>
-        <form-error [dataType]="'product'" [fControl]="dataForm.get('description')" [fControlName]="'description'"></form-error>
-      </div>
-      <div class="form-group">
-        <label for="price">Price</label>
-        <div class="input-group">
-          <span class="input-group-text">$</span>
-          <input formControlName="price" id="price" type="number" class="form-control">
-        </div>
-        <form-error [dataType]="'product'" [fControl]="dataForm.get('price')" [fControlName]="'price'"></form-error>
-      </div>
-      <div class="form-group">
-        <label for="category">Category</label>
-        <select formControlName="category" id="category" class="form-control">
-          <option value="" disabled>Select product category</option>
-          <option
-            *ngFor="let category of categories$ | async"
-            value="{{ category.name }}"
-          >{{ category.name }}</option>
-        </select>
-        <form-error [dataType]="'product'" [fControl]="dataForm.get('category')" [fControlName]="'category'"></form-error>
-      </div>
-      <div class="form-group">
-        <label for="imageUrl">Image URL</label>
-        <input formControlName="imageUrl" id="imageUrl" type="text" class="form-control">
-      </div>
-      <form-error [dataType]="'product'" [fControl]="dataForm.get('imageUrl')" [fControlName]="'imageUrl'"></form-error>
-      <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid">Save</button>
-      <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
-    </form>    
+    </div>
+    <div class="col-md-6">
+
+      <aside class="wrapper">
+        <h2>Product Preview</h2>
+        <product-card [product]="dataForm.value" [showActions]="false"></product-card>
+      </aside>
+
+    </div>
   </div>
-  <div class="col-md-6">
-    <aside>
-      <product-card [product]="dataForm.value" [showActions]="false"></product-card>
-    </aside>
-  </div>
-</div>
+
+</main>

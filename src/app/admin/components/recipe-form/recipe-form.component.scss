@@ -1,0 +1,25 @@
+.ingredients{
+  margin-bottom: 1em;
+
+  h4 {
+    width: 100%;
+  }
+
+  &-form {
+    display: flex;
+    justify-content: space-evenly;
+    
+    &__select {
+      width: 65%;
+      display: inline-block;
+      margin-right: 2%;
+    }
+  
+    &__quantity {
+      width: 31%;
+      display: inline-block;
+    }
+  }
+
+
+}

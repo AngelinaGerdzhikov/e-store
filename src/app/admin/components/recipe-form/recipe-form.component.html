@@ -1,84 +1,91 @@
-<div class="row">
-  <div class="col-md-6">
-    <form [formGroup]="dataForm" (ngSubmit)="save()">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input formControlName="title" id="title" type="text" class="form-control">
-        <form-error [dataType]="'recipe'" [fControl]="dataForm.get('title')" [fControlName]="'title'"></form-error>
-      </div>
-      <div class="form-group">
-        <label for="imageUrl">Image URL</label>
-        <input formControlName="imageUrl" id="imageUrl" type="text" class="form-control">
-      </div>
-      <form-error [dataType]="'recipe'" [fControl]="dataForm.get('imageUrl')" [fControlName]="'imageUrl'"></form-error>
-      <div class="form-group">
-        <label for="category">Category</label>
-        <select formControlName="category" id="category" class="form-control">
-          <option value=""></option>
-          <option *ngFor="let category of recipeCategories$ | async" value="{{ category.name }}">
-            {{ category.name }}
-          </option>
-        </select>
-        <form-error [dataType]="'recipe'" [fControl]="dataForm.get('category')" [fControlName]="'category'"></form-error>
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea formControlName="description" id="description" class="form-control" ></textarea>
-        <form-error [dataType]="'recipe'" [fControl]="dataForm.get('description')" [fControlName]="'description'"></form-error>
-      </div>
-      <div class="form-group">
-        <label for="directions">Directions</label>
-        <textarea formControlName="directions" id="directions" class="form-control"></textarea>
-        <form-error [dataType]="'recipe'" [fControl]="dataForm.get('directions')" [fControlName]="'directions'">
-      </form-error>
-      </div>
-      <div formArrayName="ingredients">
-        <h4>Ingredients</h4>
-        <div
-          class="form-group"
-          *ngFor="let ingredientControl of ingredientFormArray.controls; let i = index">
-          <div [formGroup]="ingredientControl">
-            <input formControlName="name" hidden>
-            <input formControlName="productUid" hidden>
-            <input formControlName="category" hidden>
-            <input formControlName="key" hidden>
-
-            <select #ingredientSelect class="form-control" (change)="onIngredientSelected($event.target.value, i)">
-              <option value="" disabled>Select ingredient</option>
-              <option
-                *ngFor="let ing of ingredients; let k = index"
-                [value]="k"
-                [selected]="data.ingredients[i] && data.ingredients[i].name === ing.name"
-              >{{ ing.name }}</option>
+<main class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <article class="wrapper">
+        <h2>Enter Recipe Information</h2>
+        <form [formGroup]="dataForm" (ngSubmit)="save()">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input formControlName="title" id="title" type="text" class="form-control">
+            <form-error [dataType]="'recipe'" [fControl]="dataForm.get('title')" [fControlName]="'title'"></form-error>
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input formControlName="imageUrl" id="imageUrl" type="text" class="form-control">
+          </div>
+          <form-error [dataType]="'recipe'" [fControl]="dataForm.get('imageUrl')" [fControlName]="'imageUrl'"></form-error>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select formControlName="category" id="category" class="form-control">
+              <option value=""></option>
+              <option *ngFor="let category of recipeCategories$ | async" value="{{ category.name }}">
+                {{ category.name }}
+              </option>
             </select>
-            
-            <input
-              formControlName="quantity"
-              type="number"
-              class="form-control"
-              placeholder="Write ingredient quantity">
+            <form-error [dataType]="'recipe'" [fControl]="dataForm.get('category')" [fControlName]="'category'"></form-error>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea formControlName="description" id="description" class="form-control" ></textarea>
+            <form-error [dataType]="'recipe'" [fControl]="dataForm.get('description')" [fControlName]="'description'"></form-error>
+          </div>
+          <div class="form-group">
+            <label for="directions">Directions</label>
+            <textarea formControlName="directions" id="directions" class="form-control"></textarea>
+            <form-error [dataType]="'recipe'" [fControl]="dataForm.get('directions')" [fControlName]="'directions'">
+          </form-error>
+          </div>
+          <div formArrayName="ingredients" class="ingredients">
+            <h4>Ingredients</h4>
+            <div
+              class="form-group ingredients-form"
+              *ngFor="let ingredientControl of ingredientFormArray.controls; let i = index">
+              <div [formGroup]="ingredientControl">
+                <input formControlName="name" hidden>
+                <input formControlName="productUid" hidden>
+                <input formControlName="category" hidden>
+                <input formControlName="key" hidden>
+    
+                <select #ingredientSelect class="form-control ingredients-form__select" (change)="onIngredientSelected($event.target.value, i)">
+                  <option value="" disabled>Select ingredient</option>
+                  <option
+                    *ngFor="let ing of ingredients; let k = index"
+                    [value]="k"
+                    [selected]="data.ingredients[i] && data.ingredients[i].name === ing.name"
+                  >{{ ing.name }}</option>
+                </select>
+                
+                <input
+                  formControlName="quantity"
+                  type="number"
+                  class="form-control ingredients-form__quantity"
+                  placeholder="Quantity">
+                <form-error 
+                  [dataType]="'recipe'"
+                  [fControl]="ingredientFormArray.controls[i].get('quantity')"
+                  [fControlName]="'ingredientQuantity'">
+                </form-error>      
+              </div>
+              <button type="button" (click)="onDeleteIngredient(i)" class="btn btn-danger">X</button>
+            </div>
             <form-error 
               [dataType]="'recipe'"
-              [fControl]="ingredientFormArray.controls[i].get('quantity')"
-              [fControlName]="'ingredientQuantity'">
-            </form-error>      
-          </div>
-          <button type="button" (click)="onDeleteIngredient(i)">X</button>
-        </div>
-        <form-error 
-          [dataType]="'recipe'"
-          [fControl]="dataForm.get('ingredients')"
-          [fControlName]="'ingredients'">
-        </form-error>
-        <button class="btn btn-default" type="button" (click)="onAddIngredient()">Add Ingredient</button>
-      </div>      
-      <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid" >Save</button>
-      <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
-    </form>    
+              [fControl]="dataForm.get('ingredients')"
+              [fControlName]="'ingredients'">
+            </form-error>
+            <button class="btn btn-default" type="button" (click)="onAddIngredient()">Add Ingredient</button>
+          </div>      
+          <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid" >Save</button>
+          <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
+        </form>    
+
+      </article>
+    </div>
+    <div class="col-md-6">
+      <aside class="wrapper">
+        <h2>Recipe Preview</h2>
+        <recipe-card [recipe]="dataForm.value"></recipe-card>
+      </aside>
+    </div>
   </div>
-  <div class="col-md-6">
-    <aside>
-      <recipe-card [recipe]="dataForm.value"></recipe-card>
-    </aside>
-  </div>
-</div>
+</main>

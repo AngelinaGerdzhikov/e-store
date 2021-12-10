@@ -1,4 +1,52 @@
+@import '../../../../styles/colors.scss';
+
 img {
   height: 300px;
   object-fit: cover;
+}
+
+.recipe {
+
+  &-title {
+    margin-bottom: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &-category {
+    font-size: 0.8em;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &-ingredients {
+    margin-bottom: 1em;
+
+    & .list-group-item {
+      display: flex;
+      justify-content: space-evenly;
+
+      &:hover {
+        background-color: transparent;
+        border-bottom-color: $default-grey; 
+
+        div {
+          color: #000!important;
+        }
+      }
+
+      .ingredient-name {
+        flex-basis: 90%;
+      }
+
+      .ingredient-quantity {
+        flex-grow: 1;
+      }
+      
+    }
+  }
+
 }

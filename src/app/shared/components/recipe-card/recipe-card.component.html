@@ -1,16 +1,29 @@
-<div *ngIf="recipe.title" class="card">
-  <img *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" class="card-img-top" [alt]="recipe.title">
+<div *ngIf="recipe.title" class="card recipe">
+  <div class="image-holder">
+    <img *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" class="card-img-top" [alt]="recipe.title">
+  </div>
   <div class="card-body">
-    <h5 class="card-title">{{ recipe.title }}</h5>
+    <h5 class="card-title recipe-title">{{ recipe.title }}</h5>
     <div class="card-text">
-      <h6>{{ recipe.category }}</h6>
-      <p *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient.name }} x {{ ingredient.quantity }}
-      </p>
-      <h6>Description</h6>
-      <p>{{ recipe.description }}</p>
-      <h6>Directions</h6>
-      <p>{{ recipe.directions }}</p>
+      <h6 class="recipe-category">{{ recipe.category }}</h6>
+      <ul class="list-group recipe-ingredients">
+        <li *ngFor="let ingredient of recipe.ingredients" class="list-group-item">
+            <h6 class="ingredient-name">
+              {{ ingredient.name }}
+            </h6>
+            <div class="ingredient-quantity">
+              x {{ ingredient.quantity }}
+            </div>
+        </li>
+      </ul>
+      <section class="recipe-section">
+        <h6>Description</h6>
+        <p>{{ recipe.description }}</p>
+      </section>
+      <section class="recipe-section">
+        <h6>Directions</h6>
+        <p>{{ recipe.directions }}</p>
+      </section>
     </div>
   </div>
 </div>

@@ -15,7 +15,7 @@ export class AdminRecipesComponent implements OnDestroy {
 
   collectionSize: number;
   page = 1;
-  pageSize = 12;
+  pageSize = 6;
 
   constructor(private recipeService: RecipesService) {
     this.subscription = this.recipeService.getAll().subscribe(recipes => {
